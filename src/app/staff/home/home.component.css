@@ -1,0 +1,12 @@
+.inner-content {
+    padding: 28px;
+    height: 100%;
+    margin-bottom: 5px;
+    overflow: auto;
+    background-color: #e5e8f5;
+    background-image: linear-gradient(62deg, #e5e8f5 96%, #E0C3FC 99%);
+    }
+
+nz-layout {
+    height: 100vh;
+}

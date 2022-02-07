@@ -1,0 +1,16 @@
+.digitalClock{
+    display: flex;
+}
+
+.icon{
+    font-size: 2rem;
+}
+
+.icon-holder{
+    margin-right: 10px;
+}
+
+.time-holder{
+    font-family: raleway;
+    font-size: 15px;
+}

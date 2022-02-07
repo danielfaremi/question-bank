@@ -1,0 +1,11 @@
+.inner-content {
+    padding: 28px;
+    height: 100%;
+    margin-bottom: 5px;
+    overflow: auto;
+    background-image: url(../../../assets/bg2.jpg);
+}
+
+nz-layout {
+    height: 100vh;
+}

@@ -1,0 +1,72 @@
+<nz-content>
+    <nz-page-header [nzGhost]="false" class="site-page-header" nzSubtitle="">
+        <nz-page-header-title>View All Employees in {{company_name}}</nz-page-header-title>
+        <nz-breadcrumb class="site-page-crumb" nz-page-header-breadcrumb>
+            <nz-breadcrumb-item>
+                <a [routerLink]="['/','admin-home']">Home</a>
+            </nz-breadcrumb-item>
+            <nz-breadcrumb-item>All Staff</nz-breadcrumb-item>
+        </nz-breadcrumb>
+    </nz-page-header><br>
+    <nz-divider></nz-divider><br>
+    <div nz-row class="body-all">
+        <div nz-col nzSpan="3"></div>
+
+        <div class="main-holder" nz-col nzSpan="18" nzJustify="space-around" nzAlign="middle">
+            <div *ngIf="response_load == false">
+                <nz-empty></nz-empty>
+            </div>
+            <div *ngIf="response_load == true">
+                <nz-card [nzTitle]="titleTemplate">
+                    <ng-template class="titleTemplate" #titleTemplate>
+                        All Staff
+                    </ng-template>
+                    <nz-list [nzBordered]="false" nzItemLayout="horizontal">
+                        <nz-list-item class="cardbody" *ngFor="let users of loaded_staff">
+                            <nz-list-item-meta>
+                                <nz-list-item-meta-avatar [nzSrc]="source">
+                                </nz-list-item-meta-avatar>
+                                <nz-list-item-meta-title>
+                                    {{users.firstname}}&nbsp;{{users.surname}}
+                                </nz-list-item-meta-title>
+                                <nz-list-item-meta-description>
+                                    <span class="genderSpan">{{users.gender}}</span>&nbsp; | &nbsp;{{ users.email }}
+                                    &nbsp; | &nbsp; {{ users.phone }}
+                                </nz-list-item-meta-description>
+                            </nz-list-item-meta>
+                            <ul nz-list-item-actions>
+                                <nz-list-item-action>
+                                    <a (click)="viewModal(profileContent, users)">View</a> &nbsp;|&nbsp; <a [routerLink]="['/','admin-home','edit-personnel',users.id]">Edit</a>
+                                </nz-list-item-action>
+                            </ul>
+                        </nz-list-item>
+                    </nz-list>
+                </nz-card>
+
+
+            </div>
+        </div>
+
+        <div nz-col nzSpan="3"></div>
+
+    </div>
+
+    <ng-template #profileContent let-params>
+        <div nz-row class=" ">
+            <div nz-col nzSpan="3"></div>
+            <div class="profile-picture-container  " nz-col nzSpan="18">
+                <img class="  profile-picture" src={{source}} alt="">
+            </div>
+            <div nz-col nzSpan="3"></div>
+        </div>
+        
+        <div nz-row class="name-row  ">
+            <div nz-col nzSpan="2"></div>
+            <div nz-col nzSpan="20">
+                <p > {{params.data.firstname}} <span *ngIf='params.data.surname'>{{params.data.middlename}}</span> {{params.data.surname}}</p>
+            </div>
+            <div nz-col nzSpan="2"></div>
+            <!-- <span>{{params.data.gender === 'male' ? faMale : faFemale}}</span> -->
+        </div>
+    </ng-template>
+</nz-content>

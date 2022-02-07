@@ -1,0 +1,85 @@
+<nz-content>
+    <app-header></app-header>
+
+    <div class="inner-content">
+        <nz-page-header class="site-page-header" (nzBack)="onBack()" nzBackIcon nzTitle="Add A Customer">
+        </nz-page-header>
+
+        <nz-divider></nz-divider>
+
+        <div nz-row>
+            <div nz-col nzSpan="3"></div>
+            <div nz-col class="" nzSpan="18">
+                <form nz-form [nzLayout]="'vertical'" [formGroup]="addCustomer" class="container" (ngSubmit)="submitCustomer()">
+                    <nz-form-item>
+                        <nz-form-label class="form-label" [nzSm]="6" [nzXs]="24" nzRequired nzFor="firstname">Firstname
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="Please input Customer's firstname!">
+                            <nz-input-group nzSize="large">
+                                <input type="text" nz-input formControlName="firstname" id="firstname"
+                                    placeholder="Customer's Firstname" />
+                            </nz-input-group>
+                        </nz-form-control>
+                    </nz-form-item>
+
+                    <nz-form-item>
+                        <nz-form-label class="form-label" [nzSm]="6" [nzXs]="24" nzFor="middlename">Middlename
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="Please input customer middlename!">
+                            <nz-input-group nzSize="large">
+                                <input type="text" nz-input formControlName="middlename" id="middlename"
+                                    placeholder="Customer's Middlename" />
+                            </nz-input-group>
+                        </nz-form-control>
+                    </nz-form-item>
+
+                    <nz-form-item>
+                        <nz-form-label class="form-label" [nzSm]="6" [nzXs]="24" nzRequired nzFor="firstname">Surname
+                        </nz-form-label>
+                        <nz-form-control nzErrorTip="Please input customer surname">
+                            <nz-input-group nzSize="large">
+                                <input type="text" nz-input formControlName="surname" id="surname"
+                                    placeholder="Customer's Surname" />
+                            </nz-input-group>
+                        </nz-form-control>
+                    </nz-form-item>
+
+                    <nz-form-item>
+                        <nz-form-label class="form-label" [nzSm]="6" [nzXs]="24" nzRequired nzFor="gender">Gender</nz-form-label>
+                        <nz-form-control nzErrorTip="Select Gender!">
+                          <nz-select nzSize="large" formControlName="gender" id="gender" nzPlaceHolder="Select Customer's Gender">
+                            <nz-option [nzLabel]="'Male'" [nzValue]="'male'"></nz-option>
+                            <nz-option [nzLabel]="'Female'" [nzValue]="'female'"></nz-option>
+                          </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+
+                    <nz-form-item>
+                        <nz-form-label class="form-label" [nzSm]="6" [nzXs]="24" nzRequired nzFor="phone">Phone Number</nz-form-label>
+                        <nz-form-control>
+                          <nz-input-group nzSize="large">
+                            <input type="number" nz-input id="phone" formControlName="phone"
+                              placeholder="Employee's Phone Number" />
+                          </nz-input-group>
+                        </nz-form-control>
+                      </nz-form-item>
+              
+
+
+                      <div nz-row>
+                        <div nz-col nzSpan="0"></div>
+                        <div class="form-button-container"nz-col nzSpan="24">
+                            <button [nzSize]="'large'" [nzShape]="'round'"nz-button class="form-button btn-grad" [nzType]="'primary'"><i nz-icon nzType="user-add" nzTheme="outline"></i>&nbsp;&nbsp;R e g i s t e r&nbsp;&nbsp;&nbsp;C u s t o m e r</button>
+                        </div>
+                        <div nz-col nzSpan="0"></div>
+                
+                      </div>
+                </form>
+            </div>
+            <div nz-col nzSpan="3"></div>
+        </div>
+
+    </div>
+
+    <app-footer></app-footer>
+</nz-content>

@@ -1,0 +1,310 @@
+<nz-content>
+    <nz-card class="head-card">
+        <div>{{user.firstname}}&nbsp;{{user.surname}}'s Profile
+            <span class="date-span">
+                <app-clock></app-clock>
+            </span>
+        </div>
+    </nz-card> <br>
+    <nz-divider></nz-divider>
+
+    <div class='container   '>
+        <!-- <input [formControl]="file" 
+        (change)="fileChange($event)" 
+        type="file" placeholder="File"> -->
+
+
+        <div nz-row class='avatar-row  '>
+            <div class='change-div  ' nz-col [nzSpan]="18" [nzPush]="6">
+                <!--<nz-upload [nzSize]=300 [nzAccept]="'mime/jpeg'" [nzBeforeUpload]="beforeUpload" [nzFileList]="profilePictureDetails">
+                    <button nz-button nzDanger nzType="dashed" nzGhost nzSize="large" class="change-button" nzShape="round">
+                        <i nz-icon nzType="edit"></i>
+                        Change Picture
+                    </button>
+                </nz-upload> 
+
+                <button *ngIf="profilePictureDetails.length" (click)='handleUpload() 'nz-button nzDanger nzType="default" nzGhost nzSize="large" class="upload-button" nzShape="round">
+                    <i nz-icon nzType="edit"></i>
+                    Upload Picture
+                </button>-->
+            </div>
+
+
+
+            <div nz-col [nzSpan]="6" [nzPull]="18">
+                <img class='user-avatar' nz-image width=96 height=96 alt="" nzSrc="../../../assets/logo.png" />
+            </div>
+        </div>
+
+        <br><br>
+
+        <div class="profile-div  ">
+            <form nz-form nzLayout="inline"  [formGroup]="editForm">
+                <div>
+                    <nz-form-item>
+                        <nz-form-label nzFor="firstname">Firstname</nz-form-label>
+                        <nz-form-control nzErrorTip="Please input your username!">
+                            <nz-input-group nzSize="large" nzPrefixIcon="user">
+                                <input formControlName="firstname" nz-input placeholder="firstname" />
+                            </nz-input-group>
+                        </nz-form-control>
+                    </nz-form-item>
+                    <br>
+                    <nz-form-item>
+                        <nz-form-label nzFor="middlename">Middlename</nz-form-label>
+                        <nz-form-control nzErrorTip="Please input your username!">
+                            <nz-input-group nzSize="large" nzPrefixIcon="user">
+                                <input formControlName="middlename" nz-input placeholder="middlename" />
+                            </nz-input-group>
+                        </nz-form-control>
+                    </nz-form-item>
+                    <br>
+                    <nz-form-item>
+                        <nz-form-label nzFor="surname">Surname</nz-form-label>
+                        <nz-form-control nzErrorTip="Please input your username!">
+                            <nz-input-group nzSize="large" nzPrefixIcon="user">
+                                <input formControlName="surname" nz-input placeholder="surname" />
+                            </nz-input-group>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div>
+                    <nz-form-item>
+                        <nz-form-label nzFor="gender">Gender</nz-form-label>
+                        <nz-form-control nzErrorTip="Please input your username!">
+                            <nz-input-group nzSize="large" nzPrefixIcon="user">
+                                <input formControlName="gender" nz-input placeholder="gender" />
+                            </nz-input-group>
+                        </nz-form-control>
+                    </nz-form-item>
+                    <br>
+                    <nz-form-item>
+                        <nz-form-label nzFor="dob">Date of Birth</nz-form-label>
+                        <nz-form-control nzErrorTip="Please input your username!">
+                            <nz-input-group nzSize="large" nzPrefixIcon="user">
+                                <input formControlName="dob" nz-input placeholder="dob" />
+                            </nz-input-group>
+                        </nz-form-control>
+                    </nz-form-item>
+                    <br>
+                    <nz-form-item>
+                        <nz-form-label nzFor="email">Email</nz-form-label>
+                        <nz-form-control nzErrorTip="Please input your username!">
+                            <nz-input-group nzSize="large" nzPrefixIcon="user">
+                                <input formControlName="email" nz-input placeholder="email" />
+                            </nz-input-group>
+                        </nz-form-control>
+                    </nz-form-item>
+
+                </div>
+                <div>
+                    <nz-form-item>
+                        <nz-form-label nzFor="phone">Phone</nz-form-label>
+                        <nz-form-control nzErrorTip="Please input your username!">
+                            <nz-input-group nzSize="large" nzPrefixIcon="user">
+                                <input formControlName="phone" nz-input placeholder="phone" />
+                            </nz-input-group>
+                        </nz-form-control>
+                    </nz-form-item>
+                    <br>
+                    <nz-form-item>
+                        <nz-form-label nzFor="date_joined">Username</nz-form-label>
+                        <nz-form-control nzErrorTip="Please input your username!">
+                            <nz-input-group nzSize="large" nzPrefixIcon="user">
+                                <input readonly formControlName="username" nz-input
+                                    placeholder="username" />
+                            </nz-input-group>
+                        </nz-form-control>
+                    </nz-form-item>
+                    <br>
+                    <nz-form-item>
+                        <nz-form-label nzFor="password">Password</nz-form-label>
+                        <nz-form-control nzErrorTip="Please input your username!">
+                            <nz-input-group nzSize="large" nzPrefixIcon="user">
+                                <input type="password" readonly formControlName="password" nz-input
+                                    placeholder="password" />
+                            </nz-input-group>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+            </form>
+        </div>
+
+        <div class="buttons-row  ">
+            <button nzSize="large" nz-button nzType="default" nzDanger (click)="passwordModal(profileContent)">Change
+                Password</button>
+            &nbsp;&nbsp;&nbsp;
+            <button class='normal-button' (click)="open()" nz-button nzType="primary" nzSize="large" nzShape="round">
+                <i nz-icon nzType="edit"></i>
+                Edit Profile
+            </button>
+        </div>
+    </div>
+
+    <ng-template #profileContent>
+
+
+        <div nz-row class="name-row  ">
+            <div nz-col nzSpan="2"></div>
+            <div nz-col nzSpan="20">
+                <form nz-form [formGroup]="passwordForm" (ngSubmit)="submitPasswordForm()">
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzFor="initialPassword">Enter Old Password</nz-form-label>
+                        <nz-form-control [nzErrorTip]="oldPWTpl">
+                            <input type="password" formControlName="initialPassword" nz-input placeholder="large size"
+                                nzSize="large" />
+                            <ng-template #oldPWTpl let-control>
+                                <ng-container *ngIf="control.hasError('required')">Please Enter Your Previous Password!
+                                </ng-container>
+                                <ng-container *ngIf="control.hasError('mismatch')">Please Enter Your Correct Previous
+                                    Password!
+                                </ng-container>
+                            </ng-template>
+                        </nz-form-control>
+                    </nz-form-item>
+
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzFor="interestRate">New Password</nz-form-label>
+                        <nz-form-control nzErrorTip="Please Enter Your New Password!">
+                            <input type="password" formControlName="password1" nz-input placeholder="New Password"
+                                nzSize="large" />
+                        </nz-form-control>
+                    </nz-form-item>
+                    <!--(ngModelChange)="updateHolder($event)"-->
+                    <nz-form-item>
+                        <nz-form-label nzRequired nzFor="ngnEquiv">Confirm Password</nz-form-label>
+                        <nz-form-control [nzErrorTip]="confirmPWTpl">
+                            <input type="password" formControlName="password2" nz-input
+                                placeholder="Confirm New Password" nzSize="large" />
+                            <ng-template #confirmPWTpl let-control>
+                                <ng-container *ngIf="control.hasError('required')">Please Confirm Your Password!
+                                </ng-container>
+                                <ng-container *ngIf="control.hasError('wrong_combination')">Passwords Do Not Match!
+                                </ng-container>
+                            </ng-template>
+                        </nz-form-control>
+                    </nz-form-item>
+                </form>
+            </div>
+            <div nz-col nzSpan="2"></div>
+        </div>
+    </ng-template>
+
+    <nz-drawer [nzBodyStyle]="{ overflow: 'auto' }" [nzMaskClosable]="false" [nzWidth]="500" [nzVisible]="visible"
+        nzTitle="Edit Your Profile" [nzFooter]="footerTpl" (nzOnClose)="close()">
+
+        <form (ngSubmit)="submitEditForm()" nz-form *nzDrawerContent [formGroup]="drawerForm">
+            <div nz-row [nzGutter]="8">
+                <div nz-col nzSpan="12">
+                    <nz-form-item>
+                        <nz-form-label nzFor="firstname">Firstname</nz-form-label>
+                        <nz-form-control nzErrorTip="Please Input Your Firstname!">
+                            <nz-input-group nzSize="default">
+                                <input formControlName="firstname" nz-input placeholder="firstname" />
+                            </nz-input-group>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="12">
+                    <nz-form-item>
+                        <nz-form-label nzFor="middlename">Middlename</nz-form-label>
+                        <nz-form-control nzErrorTip="Please Input Your Middlename!">
+                            <nz-input-group nzSize="default">
+                                <input formControlName="middlename" nz-input placeholder="middlename" />
+                            </nz-input-group>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div nz-row [nzGutter]="8">
+                <div nz-col nzSpan="12">
+                    <nz-form-item>
+                        <nz-form-label nzFor="surname">Surname</nz-form-label>
+                        <nz-form-control nzErrorTip="Please Input Your Username!">
+                            <nz-input-group nzSize="default">
+                                <input formControlName="surname" nz-input placeholder="surname" />
+                            </nz-input-group>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="12">
+                    <nz-form-item>
+                        <nz-form-label nzFor="gender">Gender</nz-form-label>
+                        <nz-form-control nzErrorTip="Please input your username!">
+                            <nz-input-group nzSize="default">
+                                <input readonly formControlName="gender" nz-input placeholder="gender" />
+                            </nz-input-group>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div nz-row [nzGutter]="8">
+                <div nz-col nzSpan="12">
+                    <nz-form-item>
+                        <nz-form-label nzFor="dob">Date of Birth</nz-form-label>
+                        <nz-form-control nzErrorTip="Please input your username!">
+                            <nz-input-group nzSize="default">
+                                <nz-date-picker formControlName="dob"></nz-date-picker>
+                            </nz-input-group>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzSpan="12">
+                    <nz-form-item>
+                        <nz-form-label nzFor="phone">Phone</nz-form-label>
+                        <nz-form-control nzErrorTip="Please Input Your Phone Number!">
+                            <nz-input-group nzSize="default">
+                                <input formControlName="phone" nz-input placeholder="phone" />
+                            </nz-input-group>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div nz-row [nzGutter]="8">
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzFor="address">Address</nz-form-label>
+                        <nz-form-control nzErrorTip="Please input your Address!">
+                            <textarea nz-input formControlName="address" nzAutosize></textarea>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div nz-row [nzGutter]="8">
+                <div nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label nzFor="address">Email</nz-form-label>
+                        <nz-form-control nzErrorTip="Please Input Your Email Address!">
+                            <input type="text" nz-input id="email" formControlName="email"
+                                placeholder="Email Address" />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+        </form>
+
+        <ng-template #footerTpl>
+            <div style="float: right">
+                <button nz-button style="margin-right: 8px;" (click)="close()">Cancel</button>
+                <button nz-button nzType="primary" (click)="submitEditForm()">Submit</button>
+            </div>
+        </ng-template>
+    </nz-drawer>
+
+
+</nz-content>
+
+
+
+<!--
+    <nz-form-item>
+                        <nz-form-label nzFor="email">Email</nz-form-label>
+                        <nz-form-control nzErrorTip="Please input your username!">
+                            <nz-input-group nzSize="large" nzPrefixIcon="user">
+                                <input formControlName="email" nz-input placeholder="email" />
+                            </nz-input-group>
+                        </nz-form-control>
+                    </nz-form-item>
+
+-->

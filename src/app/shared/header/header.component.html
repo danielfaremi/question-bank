@@ -1,0 +1,9 @@
+<nz-header>
+    <app-logo class="logo" [height]="48" [width]="48"></app-logo>
+    
+    <ul nz-menu nzMode="horizontal" class="header-menu">
+      <!-- <li nz-menu-item>nav 1</li>
+      <li nz-menu-item>nav 2</li> -->
+      <li (click)="doLogout()"nz-menu-item><i nz-icon nzType="login"></i>&nbsp;Log Out</li>
+    </ul>
+  </nz-header>

@@ -1,0 +1,59 @@
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.nz-content {
+  /* background-image: url(../../../assets/bg.jpg); */
+  background: whitesmoke;
+  margin-top: 150px;
+  padding: 12px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #cacaca, #f0f0f0);
+}
+
+nz-content {
+  background-image: url(../../../assets/bg2.jpg);
+  height: 100%;
+  /* background: url(../../../assets/bg2.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;*/
+}
+
+.form-row {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.form-header {
+  font-family: poppins;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 35px;
+  /* color: white; */
+}
+
+.login-form-button {
+  width: 100%;
+  border-radius: 5px;
+  font-size: 18px;
+  font-family: roboto;
+  font-weight: 400;
+}
+
+.rem-header {
+  text-align: center;
+  font-family: poppins;
+  font-size: 18px;
+  margin-top: 25px;
+  float: right;
+}
+
+nz-form-label {
+  font-family: poppins;
+  font-size: 18px;
+}

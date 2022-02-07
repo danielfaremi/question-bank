@@ -1,0 +1,14 @@
+<div class="digitalClock" *ngIf="hour">
+    <div class="icon-holder">
+        <img src="../../../assets/icons/clock.svg" [height]="48" [width]="48" class="far">
+    </div>
+    <div class="time-holder">
+        <div class="dayTitle">
+            {{day}} &nbsp; {{jstoday}}
+        </div>
+        <div class="digitalTime">
+            <div>{{hour}}&nbsp;:&nbsp;{{minute}}&nbsp;:&nbsp;{{second}}&nbsp;&nbsp;{{ampm}}</div>
+        </div>
+    </div>
+
+</div>

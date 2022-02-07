@@ -1,0 +1,54 @@
+.main-part {
+    margin: 0 auto;
+    text-align: center;
+    padding: 0px 5px;
+    border-radius: 25px;
+}
+
+.cpanel {
+    display: inline-block;
+    width: 100%;
+    background-color: #34495E;
+    color: #fff;
+    border-radius: 25px;
+
+}
+
+.icon-part fa-icon {
+    font-size: 30px;
+    padding: 10px;
+    border: 1px solid whitesmoke;
+    border-radius: 50%;
+    margin-top: -15px;
+    margin-bottom: 15px;
+    background-color: #34495E;
+}
+
+.icon-part span {
+    margin: 0px;
+    font-size: 20px;
+    padding-bottom: 10px;
+    font-family: raleway;
+}
+
+span{
+    padding-bottom: 10px;
+}
+
+.head-card{
+    width:95%;
+    height: 80px;
+    font-family: roboto;
+    font-size: 18px;
+    background: whitesmoke;
+    border-radius: 5px;
+    margin: auto;
+}
+
+.date-span{
+    float:right;
+}
+
+.head-two{
+    height: inherit;
+}

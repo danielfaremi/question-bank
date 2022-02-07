@@ -1,0 +1,42 @@
+<nz-content>
+    <div nz-row class="body-all">
+        <div nz-col nzSpan="7"></div>
+
+        <div class="nz-content" nz-col nzSpan="10" nzJustify="space-around" nzAlign="middle">
+            <h2 class="form-header"><app-logo [height]="40" [width]="40"></app-logo>Log In</h2>
+            <form nz-form [formGroup]="loginform" class="" (ngSubmit)="submitForm()">
+                <div class="form-row">
+                    <nz-form-item>
+                      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="username">Username</nz-form-label>
+                      <nz-form-control nzErrorTip="Please input your username!">
+                          <input nzSize="large" type="text" nz-input formControlName="username" id="username"placeholder="Username" required/>
+                      </nz-form-control>
+                    </nz-form-item>
+              
+                    <nz-form-item>
+                      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="password">Password</nz-form-label>   
+                      <nz-form-control nzErrorTip="Please input your Password!">
+                          <input nzSize="large" type="password" nz-input formControlName="password" id="password" placeholder="Password" />
+                      </nz-form-control>
+                    </nz-form-item>
+              
+                </div>
+                <nz-divider></nz-divider>
+                <div nz-row>
+                    <div nz-col nzSpan="1"></div>
+                    <div nz-col nzSpan="22">
+                      <button nz-button class="login-form-button" nzShape="round" [nzType]="'primary'"><i nz-icon nzType="login"></i>Sign In</button>
+                      <a [routerLink]="['/','register']" class="rem-header"> New User? Sign Up...</a>
+                    </div>
+                    <div nz-col nzSpan="1"></div>
+            
+                  </div>
+            </form>
+
+        </div>
+        <div nz-col nzSpan="7"></div>
+    </div>
+
+
+    <app-footer class="footer"></app-footer>
+</nz-content>

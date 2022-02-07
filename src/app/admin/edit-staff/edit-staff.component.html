@@ -1,0 +1,45 @@
+<nz-content>
+    <nz-page-header [nzGhost]="false" class="site-page-header" nzSubtitle="">
+        <nz-page-header-title *ngIf="staffDetails">You are editing {{staffDetails.firstname}} {{staffDetails.surname}}'s Profile</nz-page-header-title>
+        <nz-breadcrumb class="site-page-crumb" nz-page-header-breadcrumb>
+            <nz-breadcrumb-item>
+                <a [routerLink]="['/','admin-home']">Home</a>
+            </nz-breadcrumb-item>
+            <nz-breadcrumb-item>
+                <a [routerLink]="['/','admin-home','manage-staff']">All Staff</a>
+            </nz-breadcrumb-item>
+            <nz-breadcrumb-item *ngIf="staffDetails">Edit {{staffDetails.firstname}} {{staffDetails.surname}}'s Profile</nz-breadcrumb-item>
+        </nz-breadcrumb>
+    </nz-page-header><br>
+    <nz-divider></nz-divider><br>
+
+    <div nz-row class="body-all">
+        <div nz-col nzSpan="6" class="border"></div>
+        <div nz-col nzSpan="12">
+            <div class="profile-row border">
+                <div class="profile-div">
+                    <img class="profile-image" [src]="imgSource">
+                </div>
+            </div>
+
+            <div class="staff-details">
+                
+                <nz-collapse>
+                    <nz-collapse-panel nzHeader="Bio Data">
+                        <input nz-input placeholder="large size" nzSize="large" />
+                        <label for="html">HTML</label>                    
+                    </nz-collapse-panel>
+                </nz-collapse>
+
+                <nz-collapse>
+                    <nz-collapse-panel nzHeader="Staff Account Actions">
+                        <label for="status">HTML</label>                    
+                        <input id="status" nz-input placeholder="large size" nzSize="large" />
+                    </nz-collapse-panel>
+                </nz-collapse>
+            </div>
+        </div>
+        <div nz-col nzSpan="6" class="border"></div>
+    </div>
+
+</nz-content>
