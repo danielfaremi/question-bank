@@ -8,6 +8,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ClockComponent } from './clock/clock.component';
 import { CustomerComponent } from './customer/customer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { QuickAddComponent } from './customer/quick-add/quick-add.component';
 
 
 
@@ -17,7 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     LogoComponent,
     ClockComponent,
-    CustomerComponent
+    CustomerComponent,
+    QuickAddComponent
   ],
   imports: [
     CommonModule, 

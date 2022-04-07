@@ -14,10 +14,10 @@ export interface ICustomerFull {
     email?: string;
     customer_key?: string;
     date_joined?: string;
-    bankName?: string;
-    accountNumber?: string;
-    bankAccountType?: string;
-    creditStatus?: string;
+    bank_name?: string;
+    bank_account_number?: string;
+    bank_account_type?: string;
+    credit_status?: string;
 }
 
 

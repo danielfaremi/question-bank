@@ -5,6 +5,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LayersGuard } from './guards/layers.guard';
 import { CustomerComponent } from './shared/customer/customer.component';
+import { QuickAddComponent } from './shared/customer/quick-add/quick-add.component';
 
 const routes: Routes = [
   { 
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path: 'customer',
     component: CustomerComponent
+  },
+  {
+    path: 'quick-addcustomer',
+    component: QuickAddComponent
   },
   {
     path: 'admin-home',

@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     let b = userInput.slice(0, 4);
 
     if (b === "admi") {
-      this.backend.loginOwner(this.loginform.value).subscribe(response => {
+      this.backend.loginOwner(this.loginform.value).subscribe((response) => {
         if (response.success === true) {
           this.message.create('success', response.message);
           this.backend.setToken(JSON.stringify(response.payload));
