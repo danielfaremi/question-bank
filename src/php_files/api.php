@@ -8,6 +8,7 @@ $weekday = date("l");
 $daynumber = date("dS");
 $monthyear = date("F Y");
 $today = "$weekday $daynumber, $monthyear";
+$time_now = date('h:i:sa');
 //echo $today;
 
 if ($phpjson['forbackend'] == 'register_staff') {
@@ -66,11 +67,18 @@ if ($phpjson['forbackend'] == 'register_staff') {
 	);
 
 	if ($login) {
+		$insert = mysqli_query($connection, "INSERT INTO login_table SET
+                staff_key   	= '$login[staff_key]',
+				date_logged_in  = '$today',
+				time			= '$time_now,
+				account_type	= '$login[account_type]'
+				");
 		$result = json_encode(array(
 			'success' => true,
 			'message' => 'Login Successful',
 			'payload' => $session_data
 		));
+		
 	} else {
 		$result = json_encode(array(
 			'success' => false,
