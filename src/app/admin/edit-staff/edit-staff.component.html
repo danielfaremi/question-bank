@@ -1,6 +1,6 @@
 <nz-content>
     <nz-page-header [nzGhost]="false" class="site-page-header" nzSubtitle="">
-        <nz-page-header-title *ngIf="staffDetails">You are editing {{staffDetails.firstname}} {{staffDetails.surname}}'s Profile</nz-page-header-title>
+        <nz-page-header-title *ngIf="staffDetails">Edit {{staffDetails.firstname}} {{staffDetails.surname}}'s Profile</nz-page-header-title>
         <nz-breadcrumb class="site-page-crumb" nz-page-header-breadcrumb>
             <nz-breadcrumb-item>
                 <a [routerLink]="['/','admin-home']">Home</a>

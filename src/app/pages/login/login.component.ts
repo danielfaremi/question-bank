@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { BackendService } from 'src/app/services/backend.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,7 @@ import { BackendService } from 'src/app/services/backend.service';
 })
 export class LoginComponent implements OnInit {
   loginform!: FormGroup;
+  company_name: string;
 
   constructor(
     private fb: FormBuilder,
@@ -18,7 +20,9 @@ export class LoginComponent implements OnInit {
     private backend: BackendService,
     private message: NzMessageService
 
-  ) { }
+  ) { 
+    this.company_name = environment.company_name
+  }
 
   ngOnInit(): void {
     this.loginform = this.fb.group({

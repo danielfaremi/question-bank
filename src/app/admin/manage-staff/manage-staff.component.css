@@ -1,11 +1,16 @@
 .site-page-header {
+    width: 95%;
+    height: 80px;
     font-family: roboto;
-    border-radius: 15px;
-    font-size: 30px;
-    background-color: #85FFBD;
-    background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
+    font-size: 18px;
+    background: rgb(227, 225, 225);
+    border-radius: 5px;
+    margin: auto;
 }
-
+nz-page-header-title{
+    font-family: raleway;
+    font-size: 22px;
+}
 .site-page-crumb {
     font-family: roboto;
     font-style: italic;
@@ -68,4 +73,14 @@ nz-list{
 
 nz-list-item-meta-avatar{
     border: 1px solid red;
+}
+
+.profile-span{
+    display: block;
+    font-family: raleway;
+    font-size: 18px;
+}
+
+.label{
+    font-size: inherit;
 }

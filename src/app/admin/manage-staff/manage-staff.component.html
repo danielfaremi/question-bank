@@ -1,6 +1,6 @@
 <nz-content>
     <nz-page-header [nzGhost]="false" class="site-page-header" nzSubtitle="">
-        <nz-page-header-title>View All Employees in {{company_name}}</nz-page-header-title>
+        <nz-page-header-title>Manage Employees</nz-page-header-title>
         <nz-breadcrumb class="site-page-crumb" nz-page-header-breadcrumb>
             <nz-breadcrumb-item>
                 <a [routerLink]="['/','admin-home']">Home</a>
@@ -21,7 +21,7 @@
                     <ng-template class="titleTemplate" #titleTemplate>
                         All Staff
                     </ng-template>
-                    <nz-list [nzBordered]="false" nzItemLayout="horizontal">
+                    <!-- <nz-list [nzBordered]="false" nzItemLayout="horizontal">
                         <nz-list-item class="cardbody" *ngFor="let users of loaded_staff">
                             <nz-list-item-meta>
                                 <nz-list-item-meta-avatar [nzSrc]="source">
@@ -40,7 +40,29 @@
                                 </nz-list-item-action>
                             </ul>
                         </nz-list-item>
-                    </nz-list>
+                    </nz-list> -->
+                    <nz-table style = "background: whitesmoke;" #basicTable [nzData]="loaded_staff">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Address</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr (click)="viewModal(profileContent, data)"  *ngFor="let data of loaded_staff">
+                            <td nz-tooltip nzTooltipTitle="View {{data.firstname}}&nbsp;{{data.surname}}'s Profile">{{data.firstname}}&nbsp;{{data.surname}}</td>
+                            <td nz-tooltip nzTooltipTitle="View {{data.firstname}}&nbsp;{{data.surname}}'s Profile">{{ data.phone }}</td>
+                            <td nz-tooltip nzTooltipTitle="View {{data.firstname}}&nbsp;{{data.surname}}'s Profile">{{ data.address }}</td>
+                            <td>
+                                <a ></a> 
+                                <nz-divider nzType="vertical"></nz-divider>
+                                <a [routerLink]="['/','admin-home','edit-personnel',data.id]">Edit</a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </nz-table>
                 </nz-card>
 
 
@@ -52,21 +74,26 @@
     </div>
 
     <ng-template #profileContent let-params>
-        <div nz-row class=" ">
-            <div nz-col nzSpan="3"></div>
-            <div class="profile-picture-container  " nz-col nzSpan="18">
-                <img class="  profile-picture" src={{source}} alt="">
+        <div nz-row>
+            <div style="display: flex; justify-content: center;" nz-col nzSpan = '12'>
+                <img class="profile-picture" src={{source}} alt="">
             </div>
-            <div nz-col nzSpan="3"></div>
+            <!-- /* name, username, phone, gender, email -->
+            <div nz-col nzSpan = '12'>
+                <span class="profile-span"><span class="label"><fa-icon [icon]="faAddressBook"></fa-icon></span> {{params.data.firstname}} <span *ngIf='params.data.surname'>{{params.data.middlename}}</span> {{params.data.surname}}</span>
+                <span class="profile-span"><span class="label"><fa-icon [icon]="faUserCircle"></fa-icon></span> {{params.data.username}}</span>
+                <span class="profile-span"><span class="label"><fa-icon [icon]="faPhone"></fa-icon></span> {{params.data.phone}}</span>
+                <span class="profile-span"><span class="label"><fa-icon [icon]="faMailBulk"></fa-icon></span> {{params.data.email}}</span>
+            </div>
         </div>
-        
-        <div nz-row class="name-row  ">
+
+        <!-- <div nz-row class="name-row  ">
             <div nz-col nzSpan="2"></div>
             <div nz-col nzSpan="20">
                 <p > {{params.data.firstname}} <span *ngIf='params.data.surname'>{{params.data.middlename}}</span> {{params.data.surname}}</p>
             </div>
             <div nz-col nzSpan="2"></div>
-            <!-- <span>{{params.data.gender === 'male' ? faMale : faFemale}}</span> -->
-        </div>
+            <span>{{params.data.gender === 'male' ? faMale : faFemale}}</span> 
+        </div> -->
     </ng-template>
 </nz-content>

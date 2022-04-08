@@ -106,7 +106,7 @@
           <nz-form-label class="form-label" [nzSm]="6" [nzXs]="24" nzRequired nzFor="password">Password</nz-form-label>
           <nz-form-control>
             <nz-input-group nzSize="large">
-              <input readonly  type="text" nz-input id="password" formControlName="password" placeholder="12345678" />
+              <input [disabled]="true"  type="text" nz-input id="password" formControlName="password" placeholder="12345678" />
             </nz-input-group>
           </nz-form-control>
         </nz-form-item>

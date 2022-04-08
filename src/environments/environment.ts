@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  company_name: 'Kay Enterprises'
+  company_name: 'Kay Enterprises',
+  serverUrl: 'https://danielfaremi.com.ng/vots/api.php'
 };
 
 /*

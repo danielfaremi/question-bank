@@ -3,7 +3,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { BackendService } from 'src/app/services/backend.service';
 import { environment } from 'src/environments/environment';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
-import { faFemale, faMale } from '@fortawesome/free-solid-svg-icons';
+import { faFemale, faMale,faAddressBook, faUserCircle, faPhone, faMailBulk } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 
 
@@ -20,6 +20,11 @@ export class ManageStaffComponent implements OnInit {
 
   faFemale = faFemale;
   faMale = faMale;
+  faAddressBook = faAddressBook;
+  faUserCircle = faUserCircle;
+  faPhone = faPhone;
+  faMailBulk = faMailBulk;
+
 
 
 
@@ -49,7 +54,7 @@ export class ManageStaffComponent implements OnInit {
 
 
   viewModal(profileContent: TemplateRef<{}>, data:any): void {
-    
+    console.log(data)
     const modal:NzModalRef = this.modal.create({
       nzTitle: `${data.firstname} ${data.surname}'s Profile`,
       nzContent: profileContent,

@@ -8,18 +8,24 @@ import { Observable } from 'rxjs';
 import { login, Response, newStaff, Payload } from '../interfaces/interfaces';
 import { IEditStaff } from '../interfaces/IEditStaff';
 import { ICustomerFull } from '../interfaces/ICustomer';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BackendService {
   valid!: boolean;
-  server: string = 'http://localhost/kayapi/api.php'
+  server: string;
   constructor(
     public http: HttpClient,
     private router: Router,
     private message: NzMessageService
-  ) { console.log('Hello ServiceProvider Provider') }
+  ) {
+    this.server = environment.serverUrl;
+    if (this.server){
+      console.log('Hello ServiceProvider Provider')
+    }
+  }
 
   registerStaff(staff: newStaff): Observable<Response> {
     let body = {
