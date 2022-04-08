@@ -47,7 +47,6 @@ if ($phpjson['forbackend'] == 'register_staff') {
 } elseif ($phpjson['forbackend'] == 'login_owner') {
 	$login = mysqli_fetch_array(mysqli_query($connection, "SELECT * FROM owner_db WHERE
 			username='$phpjson[username]' AND password = '$phpjson[password]'"));
-
 	$session_data = array(
 		'id'        	 => $login['id'],
 		'firstname'      => $login['firstname'],
@@ -65,18 +64,23 @@ if ($phpjson['forbackend'] == 'register_staff') {
 		'username'	 	 => $login['username'],
 		'password'		 => $login['password']
 	);
-
+	//for login table
+	
 	if ($login) {
-		$insert = mysqli_query($connection, "INSERT INTO login_table SET
-                staff_key   	= '$login[staff_key]',
-				date_logged_in  = '$today',
-				time			= '$time_now,
-				account_type	= '$login[account_type]'
-				");
+		$login_name = $session_data['firstname'].' '.$session_data['surname'];
+		$login_track = mysqli_query($connection, "INSERT INTO login_table SET
+		staff_key   	= '$session_data[staff_key]',
+		date_logged_in  = '$today',
+		time 			= '$time_now',
+		account_type    = '$session_data[account_type]',
+		name 			= '$login_name'
+		");
+
 		$result = json_encode(array(
 			'success' => true,
 			'message' => 'Login Successful',
-			'payload' => $session_data
+			'payload' => $session_data,
+			'login'	  => $login['staff_key']
 		));
 		
 	} else {
