@@ -1,6 +1,7 @@
 <nz-content>
     <nz-page-header [nzGhost]="false" class="site-page-header" nzSubtitle="">
-        <nz-page-header-title *ngIf="staffDetails">Edit {{staffDetails.firstname}} {{staffDetails.surname}}'s Profile</nz-page-header-title>
+        <nz-page-header-title *ngIf="staffDetails.firstname">Edit {{staffDetails.firstname}} {{staffDetails.surname}}'s
+            Profile</nz-page-header-title>
         <nz-breadcrumb class="site-page-crumb" nz-page-header-breadcrumb>
             <nz-breadcrumb-item>
                 <a [routerLink]="['/','admin-home']">Home</a>
@@ -8,14 +9,14 @@
             <nz-breadcrumb-item>
                 <a [routerLink]="['/','admin-home','manage-staff']">All Staff</a>
             </nz-breadcrumb-item>
-            <nz-breadcrumb-item *ngIf="staffDetails">Edit {{staffDetails.firstname}} {{staffDetails.surname}}'s Profile</nz-breadcrumb-item>
+            <nz-breadcrumb-item *ngIf="staffDetails">Edit {{staffDetails.firstname}} {{staffDetails.surname}}'s Profile
+            </nz-breadcrumb-item>
         </nz-breadcrumb>
     </nz-page-header><br>
     <nz-divider></nz-divider><br>
 
     <div nz-row class="body-all">
-        <div nz-col nzSpan="6" class="border"></div>
-        <div nz-col nzSpan="12">
+        <div style="padding:12px;" nz-col nzSpan="14">
             <div class="profile-row border">
                 <div class="profile-div">
                     <img class="profile-image" [src]="imgSource">
@@ -23,23 +24,90 @@
             </div>
 
             <div class="staff-details">
-                
-                <nz-collapse>
-                    <nz-collapse-panel nzHeader="Bio Data">
-                        <input nz-input placeholder="large size" nzSize="large" />
-                        <label for="html">HTML</label>                    
-                    </nz-collapse-panel>
-                </nz-collapse>
+                <div class="staff-form-div">
+                    <form nz-form [formGroup]="editForm" class="" (ngSubmit)="submitForm()">
+                        <label>Firstname :</label>
+                        <nz-form-item>
+                            <nz-form-control nzErrorTip="Please input Employee Firstname!">
+                                <input nzSize="large" type="text" nz-input formControlName="firstname" id="firstname"
+                                    placeholder="Firstname" required />
+                            </nz-form-control>
+                        </nz-form-item>
 
-                <nz-collapse>
-                    <nz-collapse-panel nzHeader="Staff Account Actions">
-                        <label for="status">HTML</label>                    
-                        <input id="status" nz-input placeholder="large size" nzSize="large" />
-                    </nz-collapse-panel>
-                </nz-collapse>
+                        <label>Middlename :</label>
+                        <nz-form-item>
+                            <nz-form-control nzErrorTip="Please input Employee Middlename!">
+                                <input nzSize="large" type="text" nz-input formControlName="nmiddlename" id="middlename"
+                                    placeholder="Middlename" required />
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <label>Surname :</label>
+                        <nz-form-item>
+                            <nz-form-control nzErrorTip="Please input Employee Surname!">
+                                <input nzSize="large" type="text" nz-input formControlName="surname" id="surname"
+                                    placeholder="Surname" required />
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <label>Username :</label>
+                        <nz-form-item>
+                            <nz-form-control nzErrorTip="Please input Employee Surname!">
+                                <input nzSize="large" type="text" nz-input formControlName="username" id="username"
+                                    placeholder="Username" required />
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <label>D.o.B :</label>
+                        <nz-form-item>
+                            <nz-form-control nzErrorTip="Select Date!">
+                                <nz-date-picker nzSize="large" formControlName="dob" required id="dob"></nz-date-picker>
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <label>Address :</label>
+                        <nz-form-item>
+                            <nz-form-control nzErrorTip="Please input Employee Address!">
+                                <input nzSize="large" type="text" nz-input formControlName="address" id="address"
+                                    placeholder="Username" required />
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <label>Phone Number :</label>
+                        <nz-form-item>
+                            <nz-form-control nzErrorTip="Please input Employee Phone Number!">
+                                <input nzSize="large" type="text" nz-input formControlName="phone" id="phone"
+                                    placeholder="Phone Number" required />
+                            </nz-form-control>
+                        </nz-form-item>
+
+
+                    </form>
+                </div>
             </div>
         </div>
-        <div nz-col nzSpan="6" class="border"></div>
+
+        <div style="padding:12px;" nz-col nzSpan="10" class="border">
+            <div class="login-list-head">
+                <h2>{{staffDetails.firstname}}'s Recent Logins</h2>
+                <h5><i nz-icon nzType="calendar" nzTheme="outline"></i>Date Employed: {{staffDetails.date_joined}}</h5>
+            </div>
+
+            <div class="login-list-body">
+                <nz-list nzBordered nzItemLayout="horizontal">
+                    <nz-list-item style="border-bottom: 1px solid rgb(203, 203, 203);" *ngFor="let item of loginData">
+                        <nz-list-item-meta nzAvatar="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                            nzDescription="{{item.date}}">
+                            <nz-list-item-meta-title>
+                                <i nz-icon nzType="clock-circle" nzTheme="outline"></i>&nbsp;{{item.time}}
+                            </nz-list-item-meta-title>
+                        </nz-list-item-meta>
+                    </nz-list-item>
+                    <nz-list-empty *ngIf="loadLogin == false"></nz-list-empty>
+                </nz-list>
+            </div>
+        </div>
+
     </div>
 
 </nz-content>

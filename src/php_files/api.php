@@ -115,6 +115,15 @@ if ($phpjson['forbackend'] == 'register_staff') {
 	);
 
 	if ($login) {
+		$login_name = $session_data['firstname'].' '.$session_data['surname'];
+		$login_track = mysqli_query($connection, "INSERT INTO login_table SET
+		staff_key   	= '$session_data[staff_key]',
+		date_logged_in  = '$today',
+		time 			= '$time_now',
+		account_type    = '$session_data[account_type]',
+		name 			= '$login_name'
+		");
+
 		$result = json_encode(array(
 			'success' => true,
 			'message' => 'Login Successful',
@@ -332,5 +341,38 @@ if ($phpjson['forbackend'] == 'register_staff') {
 		));
 	}
 	echo $result;
+
+} elseif ($phpjson['forbackend'] == 'getLogDetails') {
+	$my_staff = array();
+	$fetch = mysqli_query($connection, "SELECT * FROM login_table WHERE staff_key='$phpjson[staffkey]'");
+
+	while ($rows = mysqli_fetch_array($fetch)) {
+		$my_staff = array(
+			'date'			=> $rows['date_logged_in'],
+			'account_type'	=> $rows['account_type'],
+			'staff_key'		=> $rows['staff_key'],
+			'name'			=> $rows['name'],
+			'time'			=> $rows['time']
+		);
+	}
+
+	if ($fetch) {
+		$result = json_encode(array(
+			'success' => true,
+			'message' => 'Login Details Loaded Successfully',
+			'payload' => $my_staff
+		));
+	} else {
+		$result = json_encode(array(
+			'success' => false,
+			'message' => 'Error Loading Login Details',
+			'payload' => null
+		));
+	}
+	echo $result;
+} elseif ($phpjson['forbackend'] == 'getAllCustomers') {
+	$my_customers = array();
+	$all_customers = mysqli_query($connection, "");
+
 
 }

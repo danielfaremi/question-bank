@@ -13,9 +13,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class EditStaffComponent implements OnInit {
   staffDetails!: any;
   company_name?: string;
-  editForm!: FormGroup
+  editForm!: FormGroup;
+  staffKey!: string;
+  loadLogin!: boolean;
 
-  imgSource="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png";
+  loginData: any;
+
+  imgSource = "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png";
 
   constructor(
     private actRoute: ActivatedRoute,
@@ -23,29 +27,75 @@ export class EditStaffComponent implements OnInit {
     private fb: FormBuilder,
     private backend: BackendService
   ) {
-    this.company_name = environment.company_name
+    this.company_name = environment.company_name;
   }
 
   ngOnInit(): void {
-     this.actRoute.params.subscribe((data: any) => {
+    this.actRoute.params.subscribe((data: any) => {
       let id = data.id
       this.backend.getById(id).subscribe((response) => {
-        this.staffDetails = response.payload
-        console.log(this.staffDetails);
+        this.staffDetails = response.payload;
+        let staffKey = response.payload?.staff_key;
+        this.getLoginHistory(staffKey);
+        this.buildEditForm();
       })
     });
-
-    this.buildEditForm();
   }
 
-  buildEditForm(){
+  /*
+  {
+	"payload": {
+		"id": "5",
+		"firstname": "Daniel",
+		"surname": "Emeka",
+		"middlename": "asdf",
+		"dob": "2022-01-02T10:08:20.619Z",
+		"address": "No 10, Main Roundabout, King Street",
+		"phone": "080123456789",
+		"email": "root@abc.com",
+		"gender": "male",
+		"date_joined": "Wednesday 19th, January 2022",
+		"account_type": "STAFF",
+		"staff_key": "staff1216",
+		"username": "daniel.emeka",
+		"password": "12345",
+		"status": "ACTIVE",
+		"added_by": "admin0001"
+	}
+}
+   */
+
+  buildEditForm() {
     this.editForm = this.fb.group({
       username: [this.staffDetails.username],
+      firstname: [this.staffDetails.firstname],
+      middlename: [this.staffDetails.middlename],
+      surname: [this.staffDetails.surname],
+      dob: [this.staffDetails.dob],
+      address: [this.staffDetails.address],
+      phone: [this.staffDetails.phone],
+      email: [this.staffDetails.email],
+      gender: [this.staffDetails.gender],
+      date_joined: [this.staffDetails.date_joined],
+      account_type: [this.staffDetails.account_type],
+      status: [this.staffDetails.status]
+    })
+    console.log(this.editForm.value)
+  }
+
+  getLoginHistory(staffkey: any) {
+    this.backend.getLoginHistory(staffkey).subscribe((response) => {
+      this.loginData = (response.payload);
+      if (response.payload) {
+        this.loadLogin = true;
+      }
+      console.log(this.loginData)
     })
   }
 
-  submitForm(){
+  submitForm() {
 
   }
+
 
 }

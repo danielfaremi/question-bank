@@ -184,6 +184,17 @@ export class BackendService {
       .pipe(map(response => response))
   }
 
+  getLoginHistory(staffkey: string): Observable<any>{
+    let body = {
+      forbackend: 'getLogDetails',
+      staffkey: staffkey
+    }
+
+    return this.http.post<Response>(this.server, JSON.stringify(body))
+      .pipe(timeout(59000))
+      .pipe(map(response => response))
+  }
+
 
 
 

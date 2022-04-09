@@ -17,7 +17,7 @@
                 <nz-empty></nz-empty>
             </div>
             <div *ngIf="response_load == true">
-                <nz-card [nzTitle]="titleTemplate">
+                <nz-card  [nzBordered]="false" [nzTitle]="titleTemplate">
                     <ng-template class="titleTemplate" #titleTemplate>
                         All Staff
                     </ng-template>
