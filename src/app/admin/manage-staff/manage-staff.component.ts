@@ -27,8 +27,7 @@ export class ManageStaffComponent implements OnInit {
 
 
 
-
-  source="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png";
+  imgSource = '../../../assets/icons/person.png';
   constructor(
     private backend: BackendService,
     private message: NzMessageService,

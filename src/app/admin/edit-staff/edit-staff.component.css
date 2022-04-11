@@ -2,8 +2,6 @@
     font-family: roboto;
     border-radius: 15px;
     font-size: 30px;
-    background-color: #85FFBD;
-    background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
 }
 
 .site-page-crumb{
@@ -59,4 +57,9 @@ nz-page-header-title{
 
 .staff-form-div{
     padding: 12px;
+}
+
+.disable-login{
+    color: red;
+    font-family: poppins;
 }

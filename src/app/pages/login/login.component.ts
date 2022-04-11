@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
           this.message.create('success', response.message);
           this.backend.setToken(JSON.stringify(response.payload));
           //console.log(response.payload);
-          this.router.navigate(['/staff-home']);
+          this.router.navigate(['/staff-hombe']);
         } else {
           this.message.create('warning', response.message)
         }

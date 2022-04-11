@@ -12,16 +12,18 @@
 
     <div class="form-holder" nz-col nzSpan="18" nzJustify="space-around" nzAlign="middle">
 
-      <form nz-form [nzLayout]="'horizontal'" [formGroup]="registrationForm" class="container" (ngSubmit)="submitForm()">
+      <form nz-form [nzLayout]="'horizontal'" [formGroup]="registrationForm" class="container"
+        (ngSubmit)="submitForm()">
         <h2 class="form-header">Add New Employee</h2>
         <nz-divider></nz-divider>
 
         <nz-form-item>
-          <nz-form-label class="form-label" [nzSm]="6" [nzXs]="24" nzRequired nzFor="firstname">Firstname</nz-form-label>
+          <nz-form-label class="form-label" [nzSm]="6" [nzXs]="24" nzRequired nzFor="firstname">Firstname
+          </nz-form-label>
           <nz-form-control nzErrorTip="Please input employee firstname!">
             <nz-input-group nzSize="large">
-              <input type="text" nz-input formControlName="firstname" id="firstname"
-                placeholder="Employee's Firstname" />
+              <input (ngModelChange)="doUsername($event)" type="text" nz-input formControlName="firstname"
+                id="firstname" placeholder="Employee's Firstname" />
             </nz-input-group>
           </nz-form-control>
         </nz-form-item>
@@ -47,14 +49,15 @@
         </nz-form-item>
 
         <nz-form-item>
-          <nz-form-label class="form-label" class="form-label" [nzSm]="6" [nzXs]="24" nzFor="username">Username</nz-form-label>
+          <nz-form-label class="form-label" class="form-label" [nzSm]="6" [nzXs]="24" nzFor="username">Username
+          </nz-form-label>
           <nz-form-control>
             <nz-input-group nzSize="large">
               <input readonly type="text" nz-input id="username" formControlName="username" placeholder="Username" />
             </nz-input-group>
           </nz-form-control>
         </nz-form-item>
-        
+
         <nz-form-item>
           <nz-form-label class="form-label" [nzSm]="6" [nzXs]="24" nzRequired nzFor="gender">Gender</nz-form-label>
           <nz-form-control nzErrorTip="Select your Gender!">
@@ -86,18 +89,17 @@
           <nz-form-label class="form-label" [nzSm]="6" [nzXs]="24" nzRequired nzFor="phone">Phone Number</nz-form-label>
           <nz-form-control>
             <nz-input-group nzSize="large">
-              <input type="number" nz-input id="phone" formControlName="phone"
-                placeholder="Employee's Phone Number" />
+              <input type="number" nz-input id="phone" formControlName="phone" placeholder="Employee's Phone Number" />
             </nz-input-group>
           </nz-form-control>
         </nz-form-item>
 
         <nz-form-item>
-          <nz-form-label class="form-label" [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Email Address</nz-form-label>
+          <nz-form-label class="form-label" [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Email Address
+          </nz-form-label>
           <nz-form-control>
             <nz-input-group nzSize="large">
-              <input type="text" nz-input id="email" formControlName="email"
-                placeholder="Employee's Email Address" />
+              <input type="text" nz-input id="email" formControlName="email" placeholder="Employee's Email Address" />
             </nz-input-group>
           </nz-form-control>
         </nz-form-item>
@@ -106,19 +108,18 @@
           <nz-form-label class="form-label" [nzSm]="6" [nzXs]="24" nzRequired nzFor="password">Password</nz-form-label>
           <nz-form-control>
             <nz-input-group nzSize="large">
-              <input [disabled]="true"  type="text" nz-input id="password" formControlName="password" placeholder="12345678" />
+              <input [disabled]="true" type="text" nz-input id="password" formControlName="password"
+                placeholder="12345678" />
             </nz-input-group>
           </nz-form-control>
         </nz-form-item>
 
         <nz-divider></nz-divider>
-        <div nz-row>
-          <div nz-col nzSpan="0"></div>
-          <div class="form-button-container"nz-col nzSpan="24">
-              <button [nzSize]="'large'" [nzShape]="'round'"nz-button class="form-button btn-grad" [nzType]="'primary'"><i nz-icon nzType="user-add" nzTheme="outline"></i>&nbsp;&nbsp;R e g i s t e r&nbsp;&nbsp;&nbsp;E m p l o y e e</button>
-          </div>
-          <div nz-col nzSpan="0"></div>
-  
+        <div>
+          <button (click)="submitForm()" nzBlock nz-button nzType="primary" [nzLoading]="isUpdating">
+            <i nz-icon nzType="user-add" nzTheme="outline"></i>
+            Register Employee
+          </button>
         </div>
       </form>
     </div>

@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Observable } from 'rxjs';
 import { login, Response, newStaff, Payload } from '../interfaces/interfaces';
-import { IEditStaff } from '../interfaces/IEditStaff';
+import { IEditStaff, IStaffUpdate } from '../interfaces/IEditStaff';
 import { ICustomerFull } from '../interfaces/ICustomer';
 import { environment } from 'src/environments/environment';
 
@@ -139,6 +139,18 @@ export class BackendService {
       .pipe(map(response => response))
   }
 
+  disableStaffLogin(status: string, id: number): Observable<Response> {
+    let body = {
+      forbackend: 'disableStaffLogin',
+      status: status,
+      id: id
+    }
+
+    return this.http.post<Response>(this.server, JSON.stringify(body))
+      .pipe(timeout(59000))
+      .pipe(map(response => response))
+  }
+
   editStaffProfile(staffProfile: IEditStaff, id: number): Observable<Response> {
     let body = {
       forbackend: 'updateStaffProfile',
@@ -184,7 +196,7 @@ export class BackendService {
       .pipe(map(response => response))
   }
 
-  getLoginHistory(staffkey: string): Observable<any>{
+  getLoginHistory(staffkey: string): Observable<Response>{
     let body = {
       forbackend: 'getLogDetails',
       staffkey: staffkey
@@ -195,6 +207,25 @@ export class BackendService {
       .pipe(map(response => response))
   }
 
+  updateStaffProfile(staffUpdateForm: IStaffUpdate): Observable<Response>{
+    let body = {
+      forbackend: 'updateStaff',
+      address: staffUpdateForm.address,
+      dob: staffUpdateForm.dob,
+      email: staffUpdateForm.email,
+      firstname: staffUpdateForm.firstname,
+      gender: staffUpdateForm.gender,
+      middlename: staffUpdateForm.middlename,
+      phone: staffUpdateForm.phone,
+      surname: staffUpdateForm.surname,
+      username: staffUpdateForm.username,
+      staffKey: staffUpdateForm.staffKey
+    }
+
+    return this.http.post<Response>(this.server, JSON.stringify(body))
+      .pipe(timeout(59000))
+      .pipe(map(response => response))
+  }
 
 
 

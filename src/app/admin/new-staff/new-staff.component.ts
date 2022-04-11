@@ -18,7 +18,7 @@ export class NewStaffComponent implements OnInit {
   staffUsername!: string;
   tempFirstName = '';
   tempLastName = '';
-
+  isUpdating!: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -83,14 +83,19 @@ export class NewStaffComponent implements OnInit {
         }
       });
     }
-
   }
 
   doUsername(value: string): void {
     let a = (this.registrationForm.controls['firstname'].value);
     let b = this.registrationForm.controls['surname'].value;
-    let staffUsername = `${a}.${b}`;
-    this.registrationForm.get('username')!.setValue(value = `${staffUsername.toLowerCase()}`)
+
+    if (!this.registrationForm.controls['surname'].value) {
+      let staffUsername = `${a}.`;
+      this.registrationForm.get('username')!.setValue(value = `${staffUsername.toLowerCase()}`);
+    } else {
+      let staffUsername = `${a}.${b}`;
+      this.registrationForm.get('username')!.setValue(value = `${staffUsername.toLowerCase()}`)
+    }
   }
 
 }

@@ -347,7 +347,7 @@ if ($phpjson['forbackend'] == 'register_staff') {
 	$fetch = mysqli_query($connection, "SELECT * FROM login_table WHERE staff_key='$phpjson[staffkey]'");
 
 	while ($rows = mysqli_fetch_array($fetch)) {
-		$my_staff = array(
+		$my_staff[] = array(
 			'date'			=> $rows['date_logged_in'],
 			'account_type'	=> $rows['account_type'],
 			'staff_key'		=> $rows['staff_key'],
@@ -375,4 +375,51 @@ if ($phpjson['forbackend'] == 'register_staff') {
 	$all_customers = mysqli_query($connection, "");
 
 
+} elseif ($phpjson['forbackend'] == 'updateStaff') {
+	$update = mysqli_query($connection, "UPDATE staff SET
+			address = '$phpjson[address]',
+			dob = '$phpjson[dob]',
+			email = '$phpjson[email]',
+			firstname = '$phpjson[firstname]',
+			gender = '$phpjson[gender]',
+			middlename = '$phpjson[middlename]',
+			phone = '$phpjson[phone]',
+			surname = '$phpjson[surname]',
+			username = '$phpjson[username]'
+			WHERE id = '$phpjson[id]'");
+
+	if ($update) {
+		$result = json_encode(array(
+			'success' => true,
+			'message' => 'Profile Updated Successfully',
+			'payload' => null
+		));
+	} else {
+		$result = json_encode(array(
+			'success' => false,
+			'message' => 'Error Updating Profile',
+			'payload' => null
+		));
+	}
+	echo $result;
+}  elseif ($phpjson['forbackend'] == 'disableStaffLogin') {
+
+	$update = mysqli_query($connection, "UPDATE staff SET
+			status = '$phpjson[status]' WHERE id = '$phpjson[id]'
+			");
+
+	if ($update) {
+		$result = json_encode(array(
+			'success' => true,
+			'message' => 'User Disabled Successfully',
+			'payload' => null
+		));
+	} else {
+		$result = json_encode(array(
+			'success' => false,
+			'message' => 'Error Disabling User',
+			'payload' => null
+		));
+	}
+	echo $result;
 }
