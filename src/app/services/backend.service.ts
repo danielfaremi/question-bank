@@ -227,6 +227,17 @@ export class BackendService {
       .pipe(map(response => response))
   }
 
+  getAllCustomers() {
+    let body = {
+      forbackend: 'getAllCustomers'
+    }
+
+    return this.http.post<Response>(this.server, JSON.stringify(body))
+      .pipe(timeout(59000))
+      .pipe(map(response => response))
+  }
+
+
 
 
 

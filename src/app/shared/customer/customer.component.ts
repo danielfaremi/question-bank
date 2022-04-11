@@ -12,11 +12,13 @@ import { environment } from 'src/environments/environment';
 })
 export class CustomerComponent implements OnInit {
   addCustomer!: FormGroup;
-  addedByUser!: any;
+  addedByUser!: string;
+  token!: any;
   company_name!: string;
-  staffUsername!: string;
+  staffOrAdmin!: string;
   tempFirstName = '';
   tempLastName = '';
+  isUpdating!: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -41,20 +43,26 @@ export class CustomerComponent implements OnInit {
       status: null,
       added_by: null,
       credit_status: null
-    })
+    });
+    this.company_name = environment.company_name;
    }
 
 
   ngOnInit(): void {
-    this.addedByUser = localStorage.getItem('token');
-    this.addedByUser = JSON.parse(this.addedByUser)
-    this.addedByUser = this.addedByUser.firstname + " " + this.addedByUser.surname
-    console.log(this.addedByUser)
-    this.company_name = environment.company_name
+    this.token = localStorage.getItem('token');
+    this.token = JSON.parse(this.token);
+    this.addedByUser = this.token.firstname + " " + this.token.surname;
+    this.staffOrAdmin = this.token.account_type;
+    //console.log(this.addedByUser, this.staffOrAdmin);
   }
 
   onBack(){
-    
+    //check if user is a staff or admin user.
+    if (this.staffOrAdmin === 'ADMIN'){
+      this.router.navigateByUrl('admin-home');
+    } else {
+      this.router.navigateByUrl('staff-home');
+    }
   }
 
   submitCustomer(){
@@ -73,10 +81,7 @@ export class CustomerComponent implements OnInit {
       }
     }, (err) => {
       this.message.create('error', 'Timeout');
-      console.log(JSON.stringify(err))
+      //console.log(JSON.stringify(err))
     });
-   
-  
-
   }
 }

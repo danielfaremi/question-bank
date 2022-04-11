@@ -6,4 +6,6 @@ reports
     list of all categories
 
 admin
-    edit staff page
+    edit staff page ✔
+    add customer page ✔
+    update own profile (staff)  ✔

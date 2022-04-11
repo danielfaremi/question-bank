@@ -372,9 +372,44 @@ if ($phpjson['forbackend'] == 'register_staff') {
 	echo $result;
 } elseif ($phpjson['forbackend'] == 'getAllCustomers') {
 	$my_customers = array();
-	$all_customers = mysqli_query($connection, "");
+	$all_customers = mysqli_query($connection,  "SELECT * FROM customer");
 
-
+	while ($rows = mysqli_fetch_array($all_customers)) {
+		$my_customers[] = array(
+			'id'					=> $rows['id'],
+			'firstname'				=> $rows['firstname'],
+			'surname'				=> $rows['surname'],
+			'middlename'			=> $rows['middlename'],
+			'address'				=> $rows['address'],
+			'phone'					=> $rows['phone'],
+			'gender'				=> $rows['gender'],
+			'account_type'			=> $rows['account_type'],
+			'status'				=> $rows['status'],
+			'added_by'				=> $rows['added_by'],
+			'dob'					=> $rows['dob'],
+			'email'					=> $rows['email'],
+			'customer_key'			=> $rows['customer_key'],
+			'date_joined'			=> $rows['date_joined'],
+			'bank_name'				=> $rows['bank_name'],
+			'bank_account_number'	=> $rows['bank_account_number'],
+			'bank_account_type'		=> $rows['bank_account_type'],
+			'credit_status'			=> $rows['credit_status']
+		);
+	}
+	if ($all_customers) {
+		$result = json_encode(array(
+			'success' => true,
+			'message' => 'Customers Loaded Successfully',
+			'payload' => $my_customers
+		));
+	} else {
+		$result = json_encode(array(
+			'success' => false,
+			'message' => 'Error Disabling User',
+			'payload' => null
+		));
+	}
+	echo $result;
 } elseif ($phpjson['forbackend'] == 'updateStaff') {
 	$update = mysqli_query($connection, "UPDATE staff SET
 			address = '$phpjson[address]',

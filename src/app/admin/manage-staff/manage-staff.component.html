@@ -9,10 +9,11 @@
         </nz-breadcrumb>
     </nz-page-header><br>
     <nz-divider></nz-divider><br>
-    <div nz-row class="body-all">
+    <div *ngIf="spin_load == false" nz-row class="body-all">
         <div nz-col nzSpan="3"></div>
 
         <div class="main-holder" nz-col nzSpan="18" nzJustify="space-around" nzAlign="middle">
+
             <div *ngIf="response_load == false">
                 <nz-empty></nz-empty>
             </div>
@@ -71,6 +72,10 @@
 
         <div nz-col nzSpan="3"></div>
 
+    </div>
+    <div *ngIf="spin_load == true">
+        <ng-template #indicatorTemplate><i nz-icon nzType="loading"></i></ng-template>
+        <nz-spin nzSimple [nzIndicator]="indicatorTemplate"></nz-spin>    
     </div>
 
     <ng-template #profileContent let-params>

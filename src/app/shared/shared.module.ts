@@ -9,6 +9,7 @@ import { ClockComponent } from './clock/clock.component';
 import { CustomerComponent } from './customer/customer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QuickAddComponent } from './customer/quick-add/quick-add.component';
+import { ManageCustomerComponent } from './customer/manage-customer/manage-customer.component';
 
 
 
@@ -19,7 +20,8 @@ import { QuickAddComponent } from './customer/quick-add/quick-add.component';
     LogoComponent,
     ClockComponent,
     CustomerComponent,
-    QuickAddComponent
+    QuickAddComponent,
+    ManageCustomerComponent
   ],
   imports: [
     CommonModule, 
@@ -32,7 +34,8 @@ import { QuickAddComponent } from './customer/quick-add/quick-add.component';
     HeaderComponent,
     FooterComponent,
     ClockComponent,
-    CustomerComponent
+    CustomerComponent,
+    ManageCustomerComponent
   ]
 })
 export class SharedModule { }

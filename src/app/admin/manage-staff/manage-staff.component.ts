@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 export class ManageStaffComponent implements OnInit {
   company_name!: string;
   response_load!: boolean;
+  spin_load!: boolean;
   loaded_staff?: any;
   visible: boolean = false;
 
@@ -38,13 +39,16 @@ export class ManageStaffComponent implements OnInit {
      }
 
   ngOnInit(): void {
+    this.spin_load=true;
     this.backend.getAllStaff().subscribe((response) => {
       if (response.payload === null){
         this.response_load = false;
+        this.spin_load=false;
         this.message.create("warning",`${response.message}`);
       } else if (response.payload !== null){
         this.loaded_staff = response.payload;
         this.response_load = true;
+        this.spin_load=false;
         this.message.create("success",`${response.message}`);
       }
       console.log (response)
