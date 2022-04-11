@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QuickAddComponent } from './customer/quick-add/quick-add.component';
 import { ManageCustomerComponent } from './customer/manage-customer/manage-customer.component';
 
+import { RouterModule, Routes } from '@angular/router';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ManageCustomerComponent } from './customer/manage-customer/manage-custo
     CommonModule, 
     nzModules,
     FontAwesomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports: [
     LogoComponent,

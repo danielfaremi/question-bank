@@ -66,22 +66,32 @@ export class CustomerComponent implements OnInit {
   }
 
   submitCustomer(){
-    this.addCustomer.patchValue({
-      account_type: "CUSTOMER",
-      status: 'ACTIVE',
-      credit_status: 'NO DEBT',
-      added_by: this.addedByUser,
-    });
+    if (this.addCustomer.valid) {
+      this.addCustomer.patchValue({
+        account_type: "CUSTOMER",
+        status: 'ACTIVE',
+        credit_status: 'NO DEBT',
+        added_by: this.addedByUser,
+      });
+  
+      this.backend.addCustomer(this.addCustomer.value).subscribe((response) =>{
+        if (response.success == true) {
+          this.message.create('success', response.message);
+        } else if (response.success == false) {
+          this.message.create('warning', response.message)
+        }
+      }, (err) => {
+        this.message.create('error', 'Timeout');
+        //console.log(JSON.stringify(err))
+      });
+    } else {
+      Object.values(this.addCustomer.controls).forEach(control => {
+        if (control.invalid) {
+          control.markAsDirty();
+          control.updateValueAndValidity({ onlySelf: true });
+        }
+      });
 
-    this.backend.addCustomer(this.addCustomer.value).subscribe((response) =>{
-      if (response.success == true) {
-        this.message.create('success', response.message);
-      } else if (response.success == false) {
-        this.message.create('warning', response.message)
-      }
-    }, (err) => {
-      this.message.create('error', 'Timeout');
-      //console.log(JSON.stringify(err))
-    });
+    }
   }
 }
