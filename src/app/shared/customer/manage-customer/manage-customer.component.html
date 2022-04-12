@@ -1,4 +1,17 @@
-<nz-content>
+<div *ngIf="spin_load === true" nz-row>
+    <div nz-col nzSpan="0">
+        
+    </div>
+    <div class="spin-div" style="display: flex; justify-content: center;"nz-col nzSpan="24">
+        <ng-template #indicatorTemplate><i nz-icon nzType="loading"></i></ng-template>
+        <nz-spin nzTip="Loadin din din Loading..." [nzSize]="'large'" nzSimple [nzIndicator]="indicatorTemplate"></nz-spin>
+    </div>
+    <div nz-col nzSpan="0">
+        
+    </div>
+</div>
+
+<div *ngIf="spin_load === false">
     <app-header></app-header>
 
     <div class="inner-content">
@@ -6,7 +19,7 @@
         </nz-page-header>
 
         <nz-divider></nz-divider>
-        <div *ngIf="spin_load == false" nz-row class="body-all">
+        <div nz-row class="body-all">
             <div nz-col nzSpan="3"></div>
 
             <div class="main-holder" nz-col nzSpan="18" nzJustify="space-around" nzAlign="middle">
@@ -59,10 +72,7 @@
             <div nz-col nzSpan="3"></div>
 
         </div>
-        <div *ngIf="spin_load == true">
-            <ng-template #indicatorTemplate><i nz-icon nzType="loading"></i></ng-template>
-            <nz-spin nzSimple [nzIndicator]="indicatorTemplate"></nz-spin>
-        </div>
+       
     </div>
 
 
@@ -98,6 +108,4 @@
                 <span>{{params.data.gender === 'male' ? faMale : faFemale}}</span> 
             </div> -->
     </ng-template>
-
-
-</nz-content>
+</div>

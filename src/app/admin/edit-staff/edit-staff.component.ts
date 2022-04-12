@@ -22,6 +22,7 @@ export class EditStaffComponent implements OnInit {
   spin!: boolean;
   isUpdating!: boolean;
   loginDisabled!: boolean;
+  loadingLogin!: boolean;
 
   imgSource = '../../../assets/icons/person.png';
 
@@ -70,8 +71,10 @@ export class EditStaffComponent implements OnInit {
   }
 
   getLoginHistory(staffkey: any) {
+    this.loadingLogin = true;
     this.backend.getLoginHistory(staffkey).subscribe((response) => {
       this.loginData = (response.payload);
+      this.loadingLogin = false;
       if (this.loginData.length == 0) {
         this.loadLogin = false;
       }

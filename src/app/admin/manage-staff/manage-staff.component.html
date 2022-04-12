@@ -1,4 +1,17 @@
-<nz-content>
+<div *ngIf="spin_load === true" nz-row>
+    <div nz-col nzSpan="0">
+
+    </div>
+    <div class="spin-div" style="display: flex; justify-content: center;" nz-col nzSpan="24">
+        <ng-template #indicatorTemplate><i nz-icon nzType="loading"></i></ng-template>
+        <nz-spin nzTip="Loadin din din Loading..." [nzSize]="'large'" nzSimple [nzIndicator]="indicatorTemplate">
+        </nz-spin>
+    </div>
+    <div nz-col nzSpan="0">
+
+    </div>
+</div>
+<div *ngIf="spin_load === false">
     <nz-page-header [nzGhost]="false" class="site-page-header" nzSubtitle="">
         <nz-page-header-title>Manage Employees</nz-page-header-title>
         <nz-breadcrumb class="site-page-crumb" nz-page-header-breadcrumb>
@@ -18,7 +31,7 @@
                 <nz-empty></nz-empty>
             </div>
             <div *ngIf="response_load == true">
-                <nz-card  [nzBordered]="false" [nzTitle]="titleTemplate">
+                <nz-card [nzBordered]="false" [nzTitle]="titleTemplate">
                     <ng-template class="titleTemplate" #titleTemplate>
                         All Staff
                     </ng-template>
@@ -42,28 +55,102 @@
                             </ul>
                         </nz-list-item>
                     </nz-list> -->
-                    <nz-table style = "background: whitesmoke;" #basicTable [nzData]="loaded_staff">
+                    <nz-table style="background: whitesmoke;" #basicTable [nzData]="loaded_staff">
                         <thead>
-                          <tr>
-                            <th>Name</th>
-                            <th>Age</th>
-                            <th>Address</th>
-                            <th>Action</th>
-                          </tr>
+                            <tr>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Address</th>
+                                <th>Action</th>
+                            </tr>
                         </thead>
                         <tbody>
-                          <tr (click)="viewModal(profileContent, data)"  *ngFor="let data of loaded_staff">
-                            <td nz-tooltip nzTooltipTitle="View {{data.firstname}}&nbsp;{{data.surname}}'s Profile">{{data.firstname}}&nbsp;{{data.surname}}</td>
-                            <td nz-tooltip nzTooltipTitle="View {{data.firstname}}&nbsp;{{data.surname}}'s Profile">{{ data.phone }}</td>
-                            <td nz-tooltip nzTooltipTitle="View {{data.firstname}}&nbsp;{{data.surname}}'s Profile">{{ data.address }}</td>
-                            <td>
-                                <a ></a> 
-                                <nz-divider nzType="vertical"></nz-divider>
-                                <a [routerLink]="['/','admin-home','edit-personnel',data.id]">Edit</a>
-                            </td>
-                          </tr>
+                            <tr *ngFor="let data of loaded_staff">
+                                <td (click)="viewModal(profileContent, data)" nz-tooltip nzTooltipTitle="View {{data.firstname}}&nbsp;{{data.surname}}'s Profile">
+                                    {{data.firstname}}&nbsp;{{data.surname}}</td>
+                                <td (click)="viewModal(profileContent, data)" nz-tooltip nzTooltipTitle="View {{data.firstname}}&nbsp;{{data.surname}}'s Profile">
+                                    {{ data.phone }}</td>
+                                <td (click)="viewModal(profileContent, data)" nz-tooltip nzTooltipTitle="View {{data.firstname}}&nbsp;{{data.surname}}'s Profile">
+                                    {{ data.address }}</td>
+                                <td>
+                                    <a (click)="showConfirm(data)" nz-tooltip nzTooltipTitle="Delete {{data.firstname}}&nbsp;{{data.surname}}'s Profile" [nzTooltipColor]="'red'" style="height: 48px; width: 100px;">
+                                        <i nz-icon>
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="24px"
+                                                height="24px">
+                                                <radialGradient id="SrYuS0MYDGH9m0SRC6_noa" cx="31.417" cy="-1098.083"
+                                                    r="28.77" gradientTransform="translate(0 1128)"
+                                                    gradientUnits="userSpaceOnUse">
+                                                    <stop offset="0" stop-color="#f4e09d" />
+                                                    <stop offset=".226" stop-color="#f8e8b5" />
+                                                    <stop offset=".513" stop-color="#fcf0cd" />
+                                                    <stop offset=".778" stop-color="#fef4dc" />
+                                                    <stop offset="1" stop-color="#fff6e1" />
+                                                </radialGradient>
+                                                <path fill="url(#SrYuS0MYDGH9m0SRC6_noa)"
+                                                    d="M7.5,64L7.5,64c1.933,0,3.5-1.567,3.5-3.5l0,0c0-1.933-1.567-3.5-3.5-3.5l0,0 C5.567,57,4,58.567,4,60.5l0,0C4,62.433,5.567,64,7.5,64z" />
+                                                <radialGradient id="SrYuS0MYDGH9m0SRC6_nob" cx="31.5" cy="-1096"
+                                                    r="31.751" gradientTransform="translate(0 1128)"
+                                                    gradientUnits="userSpaceOnUse">
+                                                    <stop offset="0" stop-color="#f4e09d" />
+                                                    <stop offset=".226" stop-color="#f8e8b5" />
+                                                    <stop offset=".513" stop-color="#fcf0cd" />
+                                                    <stop offset=".778" stop-color="#fef4dc" />
+                                                    <stop offset="1" stop-color="#fff6e1" />
+                                                </radialGradient>
+                                                <path fill="url(#SrYuS0MYDGH9m0SRC6_nob)"
+                                                    d="M62,20.5L62,20.5c0-2.485-2.015-4.5-4.5-4.5H49c-2.209,0-4-1.791-4-4l0,0 c0-2.209,1.791-4,4-4h2c2.209,0,4-1.791,4-4l0,0c0-2.209-1.791-4-4-4H20c-2.209,0-4,1.791-4,4l0,0c0,2.209,1.791,4,4,4h2 c1.657,0,3,1.343,3,3l0,0c0,1.657-1.343,3-3,3H7.5C5.567,14,4,15.567,4,17.5l0,0C4,19.433,5.567,21,7.5,21H9c1.657,0,3,1.343,3,3 l0,0c0,1.657-1.343,3-3,3H5c-2.761,0-5,2.239-5,5l0,0c0,2.761,2.239,5,5,5h2.5c1.933,0,3.5,1.567,3.5,3.5l0,0 c0,1.933-1.567,3.5-3.5,3.5H6c-2.209,0-4,1.791-4,4l0,0c0,2.209,1.791,4,4,4h11.5c1.381,0,2.5,1.119,2.5,2.5l0,0 c0,1.381-1.119,2.5-2.5,2.5l0,0c-1.933,0-3.5,1.567-3.5,3.5l0,0c0,1.933,1.567,3.5,3.5,3.5h35c1.933,0,3.5-1.567,3.5-3.5l0,0 c0-1.933-1.567-3.5-3.5-3.5H52c-1.105,0-7-0.895-7-2l0,0c0-1.105,0.895-2,2-2h12c2.209,0,4-1.791,4-4l0,0c0-2.209-1.791-4-4-4h-2.5 c-1.381,0-2.5-1.119-2.5-2.5l0,0c0-1.381,1.119-2.5,2.5-2.5H57c2.209,0,4-1.791,4-4l0,0c0-2.209-1.791-4-4-4h-4.5 c-1.933,0-3.5-1.567-3.5-3.5l0,0c0-1.933,1.567-3.5,3.5-3.5h5C59.985,25,62,22.985,62,20.5z" />
+                                                <g>
+                                                    <linearGradient id="SrYuS0MYDGH9m0SRC6_noc" x1="32" x2="32" y1="53"
+                                                        y2="8" gradientTransform="matrix(1 0 0 -1 0 64)"
+                                                        gradientUnits="userSpaceOnUse">
+                                                        <stop offset="0" stop-color="#def9ff" />
+                                                        <stop offset=".282" stop-color="#cff6ff" />
+                                                        <stop offset=".823" stop-color="#a7efff" />
+                                                        <stop offset="1" stop-color="#99ecff" />
+                                                    </linearGradient>
+                                                    <path fill="url(#SrYuS0MYDGH9m0SRC6_noc)"
+                                                        d="M15.211,11h33.578c3.024,0,5.356,2.663,4.956,5.661l-4.667,35 C48.747,54.145,46.628,56,44.122,56H19.878c-2.506,0-4.625-1.855-4.956-4.339l-4.667-35C9.855,13.663,12.187,11,15.211,11z" />
+                                                    <linearGradient id="SrYuS0MYDGH9m0SRC6_nod" x1="32" x2="32" y1="46"
+                                                        y2="56" gradientTransform="matrix(1 0 0 -1 0 64)"
+                                                        gradientUnits="userSpaceOnUse">
+                                                        <stop offset="0" stop-color="#41bfec" />
+                                                        <stop offset=".232" stop-color="#4cc5ef" />
+                                                        <stop offset=".644" stop-color="#6bd4f6" />
+                                                        <stop offset="1" stop-color="#8ae4fd" />
+                                                    </linearGradient>
+                                                    <path fill="url(#SrYuS0MYDGH9m0SRC6_nod)"
+                                                        d="M53,18H11c-1.105,0-2-0.895-2-2v-6c0-1.105,0.895-2,2-2h42c1.105,0,2,0.895,2,2v6 C55,17.105,54.105,18,53,18z" />
+                                                </g>
+                                                <g>
+                                                    <linearGradient id="SrYuS0MYDGH9m0SRC6_noe" x1="52" x2="52"
+                                                        y1="-1064" y2="-1088" gradientTransform="translate(0 1128)"
+                                                        gradientUnits="userSpaceOnUse">
+                                                        <stop offset="0" stop-color="#ff5840" />
+                                                        <stop offset=".007" stop-color="#ff5840" />
+                                                        <stop offset=".989" stop-color="#fa528c" />
+                                                        <stop offset="1" stop-color="#fa528c" />
+                                                    </linearGradient>
+                                                    <path fill="url(#SrYuS0MYDGH9m0SRC6_noe)"
+                                                        d="M52,40c-6.627,0-12,5.373-12,12s5.373,12,12,12s12-5.373,12-12S58.627,40,52,40z" />
+                                                    <path fill="#fff"
+                                                        d="M57.417,49.412l-8.005,8.005c-0.778,0.778-2.051,0.778-2.828,0l0,0 c-0.778-0.778-0.778-2.051,0-2.828l8.005-8.005c0.778-0.778,2.051-0.778,2.828,0l0,0C58.194,47.361,58.194,48.634,57.417,49.412z" />
+                                                    <path fill="#fff"
+                                                        d="M46.583,49.412l8.005,8.005c0.778,0.778,2.051,0.778,2.828,0l0,0c0.778-0.778,0.778-2.051,0-2.828 l-8.005-8.005c-0.778-0.778-2.051-0.778-2.828,0l0,0C45.806,47.361,45.806,48.634,46.583,49.412z" />
+                                                </g>
+                                            </svg>
+                                        </i>
+                                    </a>
+                                    <nz-divider nzType="vertical"></nz-divider>
+                                    <a nz-tooltip nzTooltipTitle="Edit {{data.firstname}}&nbsp;{{data.surname}}'s Profile" [nzTooltipColor]="'blue'" [routerLink]="['/','admin-home','edit-personnel',data.id]"
+                                        style="height: 48px; width: 100px;">
+                                        <i nz-icon>
+                                            <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 80 80" width="16px" height="16px"><path fill="#f5ce85" d="M11.543 58.333L17.12 52.755 27.969 62.204 21.715 68.459 3.954 76.044z"/><path fill="#967a44" d="M17.143,53.439l10.093,8.791l-5.808,5.808L4.905,75.094l7.06-16.477L17.143,53.439 M17.096,52.072 l-5.975,5.975L3.003,76.994L22,68.881l6.702-6.702L17.096,52.072L17.096,52.072z"/><path fill="#36404d" d="M7.61 66.26L3.009 77 13.776 72.401z"/><path fill="#f78f8f" d="M59.418,10.43l4.828-4.828C65.602,4.247,67.404,3.5,69.321,3.5c1.916,0,3.719,0.747,5.074,2.102 c2.798,2.798,2.798,7.351,0,10.149l-4.828,4.828L59.418,10.43z"/><path fill="#c74343" d="M69.32,4c1.783,0,3.46,0.694,4.721,1.956c2.603,2.603,2.603,6.839,0,9.442l-4.475,4.475 l-9.442-9.442l4.474-4.475C65.86,4.694,67.537,4,69.32,4 M69.32,3c-1.965,0-3.929,0.749-5.428,2.248l-5.182,5.182l10.856,10.856 l5.182-5.182c2.998-2.998,2.998-7.858,0-10.856C73.25,3.749,71.285,3,69.32,3L69.32,3z"/><g><path fill="#ffeea3" d="M22.454,67.719c-0.091-0.484-0.291-1.039-0.707-1.526c-0.603-0.707-1.506-1.106-2.688-1.189 c-0.235-2.745-2.469-3.751-3.984-3.956c-0.179-2.132-1.599-3.062-2.874-3.373l43.906-43.933L66.256,23.89L22.454,67.719z"/><path fill="#ba9b48" d="M56.107,14.448l9.442,9.442L22.69,66.775c-0.132-0.307-0.314-0.615-0.562-0.907 c-0.62-0.727-1.498-1.169-2.62-1.321c-0.401-2.534-2.412-3.607-3.98-3.929c-0.264-1.727-1.298-2.684-2.402-3.163L56.107,14.448 M56.107,13.034L11.121,58.047c0,0,0.015-0.001,0.042-0.001c0.395,0,3.43,0.109,3.43,3.461c0,0,3.986,0.124,3.986,3.98 c3.964,0,3.421,3.394,3.421,3.394L66.963,23.89L56.107,13.034L56.107,13.034z"/></g><g><path fill="#d9e7f5" d="M57.714 9.029H69.87V23.381999999999998H57.714z" transform="rotate(-45.001 63.79 16.207)"/><path fill="#788b9c" d="M63.015,7.54l9.442,9.442l-7.888,7.888l-9.442-9.442L63.015,7.54 M63.015,6.126l-9.303,9.303 l10.856,10.856l9.303-9.303L63.015,6.126L63.015,6.126z"/></g></svg>
+                                        </i>
+                                    </a>
+                                </td>
+                            </tr>
                         </tbody>
-                      </nz-table>
+                    </nz-table>
                 </nz-card>
 
 
@@ -73,22 +160,26 @@
         <div nz-col nzSpan="3"></div>
 
     </div>
-    <div *ngIf="spin_load == true">
-        <ng-template #indicatorTemplate><i nz-icon nzType="loading"></i></ng-template>
-        <nz-spin nzSimple [nzIndicator]="indicatorTemplate"></nz-spin>    
-    </div>
-
     <ng-template #profileContent let-params>
         <div nz-row>
-            <div style="display: flex; justify-content: center;" nz-col nzSpan = '12'>
+            <div style="display: flex; justify-content: center;" nz-col nzSpan='12'>
                 <img class="profile-picture" src={{imgSource}} alt="">
             </div>
             <!-- /* name, username, phone, gender, email -->
-            <div nz-col nzSpan = '12'>
-                <span class="profile-span"><span class="label"><fa-icon [icon]="faAddressBook"></fa-icon></span> {{params.data.firstname}} <span *ngIf='params.data.surname'>{{params.data.middlename}}</span> {{params.data.surname}}</span>
-                <span class="profile-span"><span class="label"><fa-icon [icon]="faUserCircle"></fa-icon></span> {{params.data.username}}</span>
-                <span class="profile-span"><span class="label"><fa-icon [icon]="faPhone"></fa-icon></span> {{params.data.phone}}</span>
-                <span class="profile-span"><span class="label"><fa-icon [icon]="faMailBulk"></fa-icon></span> {{params.data.email}}</span>
+            <div nz-col nzSpan='12'>
+                <span class="profile-span"><span class="label">
+                        <fa-icon [icon]="faAddressBook"></fa-icon>
+                    </span> {{params.data.firstname}} <span
+                        *ngIf='params.data.surname'>{{params.data.middlename}}</span> {{params.data.surname}}</span>
+                <span class="profile-span"><span class="label">
+                        <fa-icon [icon]="faUserCircle"></fa-icon>
+                    </span> {{params.data.username}}</span>
+                <span class="profile-span"><span class="label">
+                        <fa-icon [icon]="faPhone"></fa-icon>
+                    </span> {{params.data.phone}}</span>
+                <span class="profile-span"><span class="label">
+                        <fa-icon [icon]="faMailBulk"></fa-icon>
+                    </span> {{params.data.email}}</span>
             </div>
         </div>
 
@@ -101,4 +192,4 @@
             <span>{{params.data.gender === 'male' ? faMale : faFemale}}</span> 
         </div> -->
     </ng-template>
-</nz-content>
+</div>

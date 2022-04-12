@@ -51,7 +51,6 @@ export class ManageStaffComponent implements OnInit {
         this.spin_load=false;
         this.message.create("success",`${response.message}`);
       }
-      console.log (response)
     })
   }
 
@@ -82,6 +81,29 @@ export class ManageStaffComponent implements OnInit {
         data: data
       },
       nzOnOk: () => console.log('Click ok')
+    });
+  }
+
+  showConfirm(user:any): void {
+    this.modal.confirm({
+      nzTitle: `<span style="font-family: raleway; font-size:16px;">Delete ${user.firstname} ${user.surname}'s Profile</span>`,
+      nzContent: `<b style="color: red;"><i>This action cannot be undone.</i></b><br>Delete ${user.firstname} ${user.surname} from ${this.company_name}?`,
+      nzOkText: 'Delete',
+      nzOnOk: () => this.doDeleteUser(user.id),
+      nzCancelText: 'Cancel',
+      nzOkDanger: true,
+    });
+  }
+
+  doDeleteUser(id: string){
+    // console.log(id);
+    this.backend.deleteAStaff(id).subscribe({
+      next: (response) => {
+        this.message.create("success",`${response.message}`);
+        this.ngOnInit();
+      }, error: (error) => {
+        console.log(JSON.stringify(error));
+      }
     });
   }
 

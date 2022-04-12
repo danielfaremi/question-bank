@@ -222,7 +222,7 @@ export class BackendService {
       staffKey: staffUpdateForm.staffKey,
       // id: staffUpdateForm.id
     }
-    console.log('sent')
+    // console.log('sent')
     return this.http.post<Response>(this.server, JSON.stringify(body))
       .pipe(timeout(59000))
       .pipe(map(response => response));
@@ -236,12 +236,19 @@ export class BackendService {
 
     return this.http.post<Response>(this.server, JSON.stringify(body))
       .pipe(timeout(59000))
-      .pipe(map(response => response))
+      .pipe(map(response => response));
   }
 
+  deleteAStaff(id: string){
+    let body = {
+      forbackend: 'deleteStaff',
+      id: id
+    }
 
-
-
+    return this.http.post<Response>(this.server, JSON.stringify(body))
+    .pipe(timeout(59000))
+    .pipe(map(response => response));
+  }
 
 
 

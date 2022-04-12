@@ -440,13 +440,32 @@ if ($phpjson['forbackend'] == 'register_staff') {
 }  elseif ($phpjson['forbackend'] == 'disableStaffLogin') {
 
 	$update = mysqli_query($connection, "UPDATE staff SET
-			status = '$phpjson[status]' WHERE id = '$phpjson[id]'
+			status = '$phpjson[status]' 
+			WHERE id = '$phpjson[id]'
 			");
 
 	if ($update) {
 		$result = json_encode(array(
 			'success' => true,
 			'message' => 'User Disabled Successfully',
+			'payload' => null
+		));
+	} else {
+		$result = json_encode(array(
+			'success' => false,
+			'message' => 'Error Disabling User',
+			'payload' => null
+		));
+	}
+	echo $result;
+} elseif ($phpjson['forbackend'] == 'deleteStaff') {
+	$delete = mysqli_query($connection, "DELETE FROM staff WHERE
+			id = '$phpjson[id]'
+			");
+	if ($delete) {
+		$result = json_encode(array(
+			'success' => true,
+			'message' => 'User Deleted Successfully',
 			'payload' => null
 		));
 	} else {
