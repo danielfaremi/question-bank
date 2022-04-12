@@ -57,7 +57,7 @@ export class ManageStaffComponent implements OnInit {
 
 
   viewModal(profileContent: TemplateRef<{}>, data:any): void {
-    console.log(data)
+    //console.log(data)
     const modal:NzModalRef = this.modal.create({
       nzTitle: `${data.firstname} ${data.surname}'s Profile`,
       nzContent: profileContent,

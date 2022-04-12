@@ -95,18 +95,19 @@ export class EditStaffComponent implements OnInit {
   submitForm() {
     if (this.editForm.valid) {
       this.isUpdating = true;
-      // console.log(this.editForm.value)
-      this.backend.updateStaffProfile(this.editForm.value).subscribe((response) => {
-        if (response.success == true) {
-          this.message.create('success', `${response.message}`);
-          this.isUpdating = false;
-          this.router.navigateByUrl('admin-home/manage-staff')
-        } else if (response.success == false) {
-          this.message.create('warning', `${response.message}`);
+      this.backend.updateStaffProfile(this.editForm.value).subscribe({
+        next: (response) => {
+          console.log(response);
+          if (response.success == true) {
+            this.message.create('success', `${response.message}`);
+            this.isUpdating = false;
+            this.router.navigateByUrl('admin-home/manage-staff')
+          } else if (response.success == false) {
+            this.message.create('warning', `${response.message}`);
+          }
+        }, error: (error) => {
+          console.log(JSON.stringify(error));
         }
-      }, (err) => {
-        this.message.create('error', 'Timeout');
-        // console.log(JSON.stringify(err));
       });
     } else {
       Object.values(this.editForm.controls).forEach(control => {
@@ -118,6 +119,25 @@ export class EditStaffComponent implements OnInit {
     }
   }
 
-
-
 }
+
+
+
+
+
+
+
+
+      // this.backend.updateStaffProfile(this.editForm.value).subscribe((response) => {
+      //   if (response.success == true) {
+      //     this.message.create('success', `${response.message}`);
+      //     this.isUpdating = false;
+      //     this.router.navigateByUrl('admin-home/manage-staff')
+      //   } else if (response.success == false) {
+      //     this.message.create('warning', `${response.message}`);
+      //   }
+      // }, (err) => {
+      //   this.message.create('error', 'Timeout');
+      //   // console.log(JSON.stringify(err));
+      // });
+

@@ -21,4 +21,5 @@ export interface IStaffUpdate{
     surname: string;
     username: string;
     staffKey: string;
+    // id: number;
 }

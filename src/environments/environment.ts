@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   company_name: 'Kay Enterprises',
-  serverUrl: 'https://danielfaremi.com.ng/vots/api.php'
-  //serverUrl: 'http://localhost/kayapi/api.php'
+  //serverUrl: 'https://danielfaremi.com.ng/vots/api.php'
+  serverUrl: 'http://localhost/kayapi/api.php'
 };
 
 /*

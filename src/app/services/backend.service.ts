@@ -168,7 +168,7 @@ export class BackendService {
 
     return this.http.post<Response>(this.server, JSON.stringify(body))
       .pipe(timeout(59000))
-      .pipe(map(response => response))
+      .pipe(map(response => response));
   }
 
   addCustomer(customerDetails: ICustomerFull): Observable<Response> {
@@ -219,12 +219,14 @@ export class BackendService {
       phone: staffUpdateForm.phone,
       surname: staffUpdateForm.surname,
       username: staffUpdateForm.username,
-      staffKey: staffUpdateForm.staffKey
+      staffKey: staffUpdateForm.staffKey,
+      // id: staffUpdateForm.id
     }
-
+    console.log('sent')
     return this.http.post<Response>(this.server, JSON.stringify(body))
       .pipe(timeout(59000))
-      .pipe(map(response => response))
+      .pipe(map(response => response));
+      
   }
 
   getAllCustomers() {
