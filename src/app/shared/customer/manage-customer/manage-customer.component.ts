@@ -12,7 +12,7 @@ import { faFemale, faMale,faAddressBook, faUserCircle, faPhone, faMailBulk } fro
   styleUrls: ['./manage-customer.component.css']
 })
 export class ManageCustomerComponent implements OnInit {
-  
+    
   token!: any;
   company_name!: string;
   staffOrAdmin!: string;

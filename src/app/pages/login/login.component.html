@@ -33,8 +33,11 @@
         <div class='sign-in-div' nz-row>
           <div nz-col nzSpan="1"></div>
           <div nz-col nzSpan="22">
-            <button nz-button class="login-form-button" nzShape="round" [nzType]="'primary'"><i nz-icon
-                nzType="login"></i>Sign In</button>
+            <button nzBlock nz-button nzType="primary" class="login-form-button" nzShape="round" [nzLoading]="isLogin">
+              <i nz-icon nzType="login" nzTheme="outline"></i>
+              Sign In
+            </button>
+
             <!-- <a hidden [routerLink]="['/','register']" class="rem-header"> New User? Sign Up...</a> -->
           </div>
           <div nz-col nzSpan="1"></div>

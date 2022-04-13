@@ -1,4 +1,7 @@
 <div *ngIf="spin_load === true" nz-row>
+    <app-header style="width: 100%;"></app-header>
+    <nz-page-header class="site-page-header" (nzBack)="onBack()" nzBackIcon nzTitle="All Customers">
+    </nz-page-header>
     <div nz-col nzSpan="0">
         
     </div>
@@ -42,7 +45,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr (click)="viewModal(profileContent, data)" *ngFor="let data of loaded_customers">
+                                <tr (click)="viewModal(profileContent, data)" *ngFor="let data of loaded_customers" [ngClass]="{customer_debt: data.credit_status === 'DEBT'}">
                                     <td nz-tooltip
                                         nzTooltipTitle="View {{data.firstname}}&nbsp;{{data.surname}}'s Profile">
                                         {{data.firstname}}&nbsp;{{data.surname}}</td>

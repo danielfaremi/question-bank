@@ -93,3 +93,11 @@ nz-list-item-meta-avatar{
 .label{
     font-size: inherit;
 }
+
+.customer_debt{
+    background-color: rgb(255, 212, 212);
+}
+
+.customer_debt:hover{
+    font-style: italic;
+}

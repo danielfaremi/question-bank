@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environment';
 export class LoginComponent implements OnInit {
   loginform!: FormGroup;
   company_name: string;
+  isLogin!: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -32,6 +33,7 @@ export class LoginComponent implements OnInit {
   }
 
   submitForm() {
+    this.isLogin = true;
     console.log('submit', this.loginform.value);
     let userInput = this.loginform.value.username;
     let b = userInput.slice(0, 4);
@@ -42,12 +44,15 @@ export class LoginComponent implements OnInit {
           this.message.create('success', response.message);
           this.backend.setToken(JSON.stringify(response.payload));
           //console.log(response.payload);
+          this.isLogin = false;
           this.router.navigate(['/admin-home']);
         } else {
-          this.message.create('warning', response.message)
+          this.message.create('warning', response.message);
+          this.isLogin = false;
         }
       }, (err) => {
         this.message.create('error', 'Timeout');
+        this.isLogin = false;
         console.log(JSON.stringify(err))
       });
 
@@ -55,14 +60,17 @@ export class LoginComponent implements OnInit {
       this.backend.loginStaff(this.loginform.value).subscribe(response => {
         if (response.success === true) {
           this.message.create('success', response.message);
+          this.isLogin = false;
           this.backend.setToken(JSON.stringify(response.payload));
           //console.log(response.payload);
           this.router.navigate(['/staff-home']);
         } else {
-          this.message.create('warning', response.message)
+          this.message.create('warning', response.message);
+          this.isLogin = false;
         }
       }, (err) => {
         this.message.create('error', 'Timeout');
+        this.isLogin = false;
         console.log(JSON.stringify(err));
       });
 
