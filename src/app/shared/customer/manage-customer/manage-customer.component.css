@@ -95,9 +95,31 @@ nz-list-item-meta-avatar{
 }
 
 .customer_debt{
-    background-color: rgb(255, 212, 212);
+    background-color: #e4404b79;
 }
 
 .customer_debt:hover{
     font-style: italic;
+}
+
+.legend-reject{
+    display: inline-block;
+    background-color: #e4404b79;
+    height: 15px;
+    width: 15px;
+    border-radius: 3px;
+}
+
+.legend-okay{
+    display: inline-block;
+    background-color: #defff8;
+    height: 15px;
+    width: 15px;
+    border-radius: 3px;
+}
+
+.legend-wrap{
+    padding: .7em 2em .5em;
+    background-color: #f2eeee;
+    border-radius: 5px;
 }

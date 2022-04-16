@@ -35,9 +35,21 @@
                         <ng-template class="titleTemplate" #titleTemplate>
                             Customers
                         </ng-template>
-                        <nz-table style="background: whitesmoke;" #basicTable [nzData]="loaded_customers">
+                        <div nz-row>
+                            <div class="legend-wrap"nz-col nzSpan="">
+                                <span class="bold">Legend: </span>&nbsp;
+                                <span class="legend-reject"></span>
+                                <span class="bold">&nbsp;In Debt</span>
+                                &nbsp;&nbsp;&nbsp;
+                                <span class="legend-okay"></span>
+                                <span class="bold underl">&nbsp;No Debt</span>
+                            </div>
+                            <div nz-col nzSpan="17"></div>
+                          </div><br>
+                        <nz-table style="background: whitesmoke; border-radius: 5px;" #basicTable [nzData]="loaded_customers">
                             <thead>
                                 <tr>
+                                    <th>Avatar</th>
                                     <th>Name</th>
                                     <th>Phone <br>Number</th>
                                     <th>Address</th>
@@ -45,7 +57,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr (click)="viewModal(profileContent, data)" *ngFor="let data of loaded_customers" [ngClass]="{customer_debt: data.credit_status === 'DEBT'}">
+                                <tr *ngFor="let data of loaded_customers" [ngClass]="{customer_debt: data.credit_status === 'DEBT'}">
+                                    <td>
+                                        <nz-avatar [nzText]="doAvatar(data.firstname, data.surname)" nzSize="large"
+                                        style="font-family:raleway; font-weight: 500; color:white; background-color:olive;vertical-align: middle;"></nz-avatar>
+                           
+                                    </td>
                                     <td nz-tooltip
                                         nzTooltipTitle="View {{data.firstname}}&nbsp;{{data.surname}}'s Profile">
                                         {{data.firstname}}&nbsp;{{data.surname}}</td>

@@ -12,6 +12,7 @@ export class DashboardComponent implements OnInit {
   faUserPlus = faUserPlus;
   faBook = faBook;
   user!: any;
+  avatar!: string;
 
   constructor(
     private backend: BackendService
@@ -20,10 +21,13 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.backend.parseToken();
-    console.log(this.user)
-    console.log(this.backend.getAccountType())
+    console.log(this.user);
+    console.log(this.backend.getAccountType());
+    this.avatar = this.backend.doAvatar(this.user.firstname, this.user.surname);
+    console.log(this.avatar)
   }
 
+  
 
 
 }

@@ -24,3 +24,15 @@
     justify-content: center;
     height: 300px;
 }
+
+.bold{
+    font-weight: 500;
+}
+
+.italics{
+    font-style: italic;
+}
+
+.underline{
+    text-decoration: underline;
+}

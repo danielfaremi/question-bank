@@ -78,6 +78,11 @@ export class BackendService {
     localStorage.setItem('token', token);
   }
 
+  doAvatar(firstname: string, surname: string){
+    let avatar = firstname.charAt(0) + surname.charAt(0)
+    return avatar;
+  }
+  
   parseToken() {
     let c = this.getToken();
     const userToken = JSON.parse(c);

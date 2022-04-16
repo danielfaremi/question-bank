@@ -98,4 +98,9 @@ export class ManageCustomerComponent implements OnInit {
     });
   }
 
+  doAvatar(firstname: string, surname: string){
+    let avatar = firstname.charAt(0) + surname.charAt(0)
+    return avatar;
+  }
+
 }

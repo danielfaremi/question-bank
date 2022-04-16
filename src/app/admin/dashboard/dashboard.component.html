@@ -1,7 +1,8 @@
 <nz-content>
     <nz-card class="head-card">
         <div class="head-two">
-            <nz-avatar nzIcon="user" nzSrc="../../../assets/icons/person.png"></nz-avatar>
+            <nz-avatar nzText="{{avatar}}" nzSize="large"
+             style="font-family:raleway; font-weight: 500; color:white; background-color:olive;vertical-align: middle;"></nz-avatar>
             Welcome, {{user.firstname}}&nbsp;{{user.surname}}
             <span class="date-span">
                 <app-clock></app-clock>
