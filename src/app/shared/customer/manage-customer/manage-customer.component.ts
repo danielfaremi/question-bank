@@ -32,7 +32,7 @@ export class ManageCustomerComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private backend: BackendService,
+    public backend: BackendService,
     private message: NzMessageService,
     private modal: NzModalService,
 
@@ -98,9 +98,6 @@ export class ManageCustomerComponent implements OnInit {
     });
   }
 
-  doAvatar(firstname: string, surname: string){
-    let avatar = firstname.charAt(0) + surname.charAt(0)
-    return avatar;
-  }
 
+  
 }

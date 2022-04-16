@@ -57,25 +57,24 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let data of loaded_customers" [ngClass]="{customer_debt: data.credit_status === 'DEBT'}">
-                                    <td>
-                                        <nz-avatar [nzText]="doAvatar(data.firstname, data.surname)" nzSize="large"
+                                <tr  *ngFor="let data of loaded_customers" [ngClass]="{customer_debt: data.credit_status === 'DEBT'}">
+                                    <td (click)="viewModal(profileContent,data)">
+                                        <nz-avatar [nzText]="backend.doAvatar(data.firstname, data.surname)" nzSize="large"
                                         style="font-family:raleway; font-weight: 500; color:white; background-color:olive;vertical-align: middle;"></nz-avatar>
                            
                                     </td>
-                                    <td nz-tooltip
+                                    <td (click)="viewModal(profileContent,data)" nz-tooltip
                                         nzTooltipTitle="View {{data.firstname}}&nbsp;{{data.surname}}'s Profile">
                                         {{data.firstname}}&nbsp;{{data.surname}}</td>
-                                    <td nz-tooltip
+                                    <td (click)="viewModal(profileContent,data)" nz-tooltip
                                         nzTooltipTitle="View {{data.firstname}}&nbsp;{{data.surname}}'s Profile">{{
                                         data.phone }}</td>
-                                    <td nz-tooltip
+                                    <td (click)="viewModal(profileContent,data)" nz-tooltip
                                         nzTooltipTitle="View {{data.firstname}}&nbsp;{{data.surname}}'s Profile">{{
                                         data.address }}</td>
                                     <td>
-                                        <a></a>
                                         <nz-divider nzType="vertical"></nz-divider>
-                                        <!-- <a [routerLink]="['/','admin-home','edit-personnel',data.id]">Edit</a> -->
+                                        <a>Edit</a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -128,4 +127,6 @@
                 <span>{{params.data.gender === 'male' ? faMale : faFemale}}</span> 
             </div> -->
     </ng-template>
+
+    
 </div>
