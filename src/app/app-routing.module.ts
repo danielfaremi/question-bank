@@ -7,6 +7,7 @@ import { LayersGuard } from './guards/layers.guard';
 import { CustomerComponent } from './shared/customer/customer.component';
 import { QuickAddComponent } from './shared/customer/quick-add/quick-add.component';
 import { ManageCustomerComponent } from './shared/customer/manage-customer/manage-customer.component';
+import { EditCustomerComponent } from './shared/customer/edit-customer/edit-customer.component';
 
 const routes: Routes = [
   { 
@@ -29,6 +30,10 @@ const routes: Routes = [
   {
     path: 'quick-addcustomer',
     component: QuickAddComponent
+  },
+  {
+    path: 'customer/edit-customer/:id',
+    component: EditCustomerComponent
   },
   {
     path: 'admin-home',

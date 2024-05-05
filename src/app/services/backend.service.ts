@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
+
 export class BackendService {
   valid!: boolean;
   server: string;

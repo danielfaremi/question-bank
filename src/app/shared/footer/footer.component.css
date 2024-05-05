@@ -1,9 +1,12 @@
-nz-footer{
-    background: olive;
-    font-family: roboto;
-    font-size: 12px;
-    font-style: italic;
-    text-align: center;
+nz-footer {
+  background-color: transparent;
+  text-align: center;
+  line-height: 22px;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #000;
+  font-family: Mulish;
+  font-style: normal;
+  letter-spacing: -0.408px;
 }
-
-

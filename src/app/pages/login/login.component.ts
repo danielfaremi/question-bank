@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
     let userInput = this.loginform.value.username;
     let b = userInput.slice(0, 4);
 
+
     if (b === "admi") {
       this.backend.loginOwner(this.loginform.value).subscribe((response) => {
         if (response.success === true) {

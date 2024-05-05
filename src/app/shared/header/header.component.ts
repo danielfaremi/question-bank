@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendService } from 'src/app/services/backend.service';
 
 @Component({
   selector: 'app-header',
@@ -9,14 +8,17 @@ import { BackendService } from 'src/app/services/backend.service';
 export class HeaderComponent implements OnInit {
 
   constructor(
-    private backend: BackendService
   ) { }
 
   ngOnInit(): void {
   }
 
   doLogout(){
-    this.backend.doLogout()
+    this.setLogout();
+  }
+
+  setLogout() {
+    localStorage.setItem('login', 'false')
   }
 
 
