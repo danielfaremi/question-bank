@@ -1,0 +1,87 @@
+<div class="wrapper">
+    <form nz-form [formGroup]="signUpForm">
+  <div class="form-row">
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="firstname">Firstname</nz-form-label>
+      <nz-form-control nzErrorTip="Please Input Your firstname!">
+        <input
+          type="text"
+          nz-input
+          formControlName="firstname"
+          placeholder="Enter Firstname ... "
+        />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="lastname">Lastname</nz-form-label>
+      <nz-form-control nzErrorTip="Please Input Your lastname!">
+        <input
+          type="text"
+          nz-input
+          formControlName="lastname"
+          placeholder="Enter Lastname ... "
+        />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="username">Select A Role</nz-form-label>
+      <nz-form-control nzErrorTip="Please Select Your Role">
+        <input
+          type="text"
+          nz-input
+          formControlName="username"
+          placeholder="Enter Username ... "
+        />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="username">Username</nz-form-label>
+      <nz-form-control nzErrorTip="Please Input Your username!">
+        <input
+          type="text"
+          nz-input
+          formControlName="username"
+          placeholder="Enter Username ... "
+        />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="password">Password</nz-form-label>
+      <nz-form-control [nzErrorTip]="passwordTpl">
+        <input
+          type="password"
+          nz-input
+          formControlName="password"
+          placeholder="Enter Password ... "
+        />
+        <ng-template #passwordTpl let-control>
+          <ng-container *ngIf="control.hasError('required')"
+            >Password is Required!<br
+          /></ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+  <nz-divider></nz-divider>
+  <div class="btn-row">
+    <button
+      (click)="submitForm()"
+      [nzLoading]="loading.registering"
+      nz-button
+      nzType="primary"
+      nzBlock
+      [disabled]="signUpForm.invalid"
+    >
+      Sign Up
+    </button>
+    <p class="paragraph-container">
+      Already Have An Account? <a [routerLink]="['/', 'welcome', 'login']"> Sign In</a>
+    </p>
+  </div>
+</form>
+
+</div>

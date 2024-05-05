@@ -1,0 +1,25 @@
+::ng-deep .vertical-center-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+::ng-deep .vertical-center-modal .ant-modal {
+  top: 10px;
+}
+
+::ng-deep .ant-modal-content {
+  border-bottom: 3px solid #673ab7;
+}
+
+::ng-deep .ant-input-number-input{
+  text-align: center;
+}
+
+.main {
+  background: white;
+  width: 100%;
+  height: 100vh;
+  z-index: 1000;
+  position: absolute;
+}

@@ -12,28 +12,23 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { nzModules } from 'src/nzfiles';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { LoginComponent } from './pages/login/login.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { SharedModule } from './shared/shared.module';
+import { WelcomeModule } from './welcome/welcome.module';
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    nzModules,
-    FontAwesomeModule,
-    SharedModule
+    SharedModule,
+    WelcomeModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

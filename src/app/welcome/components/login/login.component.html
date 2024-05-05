@@ -1,0 +1,50 @@
+<div class="wrapper">
+  <form nz-form [formGroup]="loginForm">
+  <div class="form-row">
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="username">Username</nz-form-label>
+      <nz-form-control nzErrorTip="Please Input Your username!">
+        <input
+          type="text"
+          nz-input
+          formControlName="username"
+          placeholder="Enter Username ... "
+        />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="password">Password</nz-form-label>
+      <nz-form-control [nzErrorTip]="passwordTpl">
+        <input
+          type="password"
+          nz-input
+          formControlName="password"
+          placeholder="Enter Password ... "
+        />
+        <ng-template #passwordTpl let-control>
+          <ng-container *ngIf="control.hasError('required')"
+            >Password is Required!<br
+          /></ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+  <nz-divider></nz-divider>
+  <div class="btn-row">
+    <button
+      (click)="submitForm()"
+      [nzLoading]="loading.loggingIn"
+      nz-button
+      nzType="primary"
+      nzBlock
+      [disabled]="loginForm.invalid"
+    >
+      Sign In
+    </button>
+    <p class="paragraph-container">
+      New User? <a [routerLink]="['/', 'welcome', 'register']"> Register</a>
+    </p>
+  </div>
+</form>
+</div>
