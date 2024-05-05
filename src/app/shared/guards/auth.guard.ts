@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AuthGuard implements CanActivateChild {
   constructor(
     private notification: NzNotificationService,
     private router: Router
@@ -16,7 +16,7 @@ export class AuthGuard implements CanActivate {
     return localStorage.getItem('login') === 'true';
   }
 
-  canActivate(route: ActivatedRouteSnapshot,
+  canActivateChild(route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean | UrlTree {
     if (!this.getToken()) {

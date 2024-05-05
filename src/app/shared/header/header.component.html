@@ -1,25 +1,12 @@
 <nz-header>
+  <div class="avatar-pane">
     <app-logo class="logo" [height]="48" [width]="48"></app-logo>
-    
-    <ul nz-menu nzMode="horizontal" class="header-menu">
-      <!-- <li nz-menu-item>nav 1</li>-->
-      <li nz-menu-item>  <a nz-dropdown [nzDropdownMenu]="menu">
-        Quick Add
-        <i nz-icon nzType="down"></i>
-      </a></li> 
-      <li (click)="doLogout()"nz-menu-item><i nz-icon nzType="login"></i>&nbsp;Log Out</li>
-    </ul>
+  </div>    
+  <div class="logout-pane">
+    <span (click)="doLogout()"><i nz-icon nzType="login"></i>&nbsp;Log Out</span>   
+  </div>
   </nz-header>
 
-
-  <nz-dropdown-menu #menu="nzDropdownMenu">
-    <ul nz-menu nzSelectable>
-      <li nz-menu-item>Add Customer</li>
-      <li nz-menu-item>Add Staff</li>
-      <!-- <li nz-menu-item>3rd menu item</li>
-      <li nz-menu-item nzDanger>4th danger item</li> -->
-    </ul>
-  </nz-dropdown-menu>
 
 
   
