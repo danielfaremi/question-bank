@@ -1,0 +1,40 @@
+<nz-card class="head-card">
+  <div class="head-two">
+    <nz-avatar
+      nzText="{{ avatar }}"
+      nzSize="large"
+      style="
+        font-family: Mulish;
+        font-weight: 500;
+        color: white;
+        background-color: olive;
+        vertical-align: middle;
+      "
+    ></nz-avatar>
+    Welcome, {{ user.firstName }}&nbsp;{{ user.lastName }}
+    <span class="date-span">
+      <app-clock></app-clock>
+    </span>
+  </div>
+</nz-card>
+<br />
+
+<div style="background: #ececec; padding: 30px">
+  <div nz-row [nzGutter]="8">
+    <div nz-col [nzSpan]="8">
+      <nz-card [routerLink]="['/','dashboard','attempt-quiz']">
+        <p>Attempt Quiz</p>
+      </nz-card>
+    </div>
+    <div nz-col [nzSpan]="8">
+      <nz-card>
+        <p>Employee Roles</p>
+      </nz-card>
+    </div>
+    <div nz-col [nzSpan]="8">
+      <nz-card>
+        <p>Question Groups</p>
+      </nz-card>
+    </div>
+  </div>
+</div>

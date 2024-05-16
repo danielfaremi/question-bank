@@ -1,0 +1,25 @@
+button {
+  width: 167px;
+  height: 66px;
+  background: inherit;
+  border-radius: 8px;
+  border: 1px solid inherit;
+}
+
+.btn-text {
+  color: #333;
+  font-family: Mulish;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  text-align: center;
+  text-transform: none;
+  vertical-align: 0.13em;
+}
+
+.btn-icon > svg {
+  width: 24px;
+  height: 24px;
+  margin-right: 16px;
+}

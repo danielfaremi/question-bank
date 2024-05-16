@@ -1,0 +1,9 @@
+.footer{
+    /* position: fixed; */
+}
+
+.wrapper{
+    padding: 1em;
+    background: whitesmoke;
+    border-radius: 5px;
+}

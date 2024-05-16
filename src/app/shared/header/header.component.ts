@@ -21,6 +21,7 @@ export class HeaderComponent implements OnInit {
 
   setLogout() {
     localStorage.setItem('login', 'false');
+    localStorage.setItem('displayWelcomeModal', 'false');
     this.router.navigate(['/', 'welcome'])
 }
 

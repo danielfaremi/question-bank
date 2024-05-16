@@ -14,6 +14,7 @@ import { nzModules } from 'src/nzfiles';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from './shared/shared.module';
 import { WelcomeModule } from './welcome/welcome.module';
+import { QuestionsDashboardModule } from './questions-dashboard/questions-dashboard.module';
 
 registerLocaleData(en);
 
@@ -29,6 +30,7 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     SharedModule,
     WelcomeModule,
+    QuestionsDashboardModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

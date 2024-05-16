@@ -1,0 +1,31 @@
+.modal-content {
+  font-family: Mulish;
+  padding: 20px;
+}
+
+.welcome-header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.introduction {
+  margin-bottom: 12.5px;
+}
+
+.platform-description {
+  margin-bottom: 12.5px;
+}
+
+.importance {
+  margin-bottom: 12.5px;
+}
+
+.cybersecurity-culture {
+  margin-bottom: 12.5px;
+}
+
+.closing-statement {
+  font-style: italic;
+}

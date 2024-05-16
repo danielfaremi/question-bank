@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: false,
+  company_name: 'GAMIFICATION',
+  baseUrl: '/api'
 };

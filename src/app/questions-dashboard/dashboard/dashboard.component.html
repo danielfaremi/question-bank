@@ -1,3 +1,21 @@
 <app-header></app-header>
-<p>dashboard works!</p>
-<app-footer></app-footer>
+<div class="wrapper">
+    <router-outlet></router-outlet>
+</div>
+<app-footer class="footer"></app-footer>
+
+
+<nz-modal
+  [nzFooter]="null"
+  [nzTitle]=""
+  [nzClosable]="false"
+  [nzContent]="modalContent"
+  nzMaskClosable
+  [nzWrapClassName]="'vertical-center-modal'"
+  (nzOnCancel)="closeModal()"
+  [(nzVisible)]="loading.welcomeModal"
+>
+  <ng-template #modalContent>
+    <app-welcome-modal></app-welcome-modal>
+  </ng-template>
+</nz-modal>

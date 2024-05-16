@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from '../shared/guards/auth.guard';
+import { TakeQuizComponent } from './take-quiz/take-quiz.component';
+import { QuestionsComponent } from './questions/questions.component';
 
 const routes: Routes = [
   {
@@ -11,9 +13,18 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: DashboardComponent,
-        // canActivateChild: [ChildAuthGuard]
-      },    ]
+        redirectTo: 'questions',
+        pathMatch: 'full'
+      },
+      {
+        path: 'questions',
+        component: QuestionsComponent,
+      },
+      {
+        path: 'attempt-quiz',
+        component: TakeQuizComponent,
+      },
+    ]
   }
 ];
 

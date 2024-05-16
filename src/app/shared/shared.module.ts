@@ -8,6 +8,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ClockComponent } from './clock/clock.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { WelcomeModalComponent } from './welcome-modal/welcome-modal.component';
+import { CongratsModalComponent } from './congrats-modal/congrats-modal.component';
+import { BackButtonComponent } from './back-button/back-button.component';
 
 
 @NgModule({
@@ -16,9 +19,12 @@ import { RouterModule, Routes } from '@angular/router';
     FooterComponent,
     LogoComponent,
     ClockComponent,
+    WelcomeModalComponent,
+    CongratsModalComponent,
+    BackButtonComponent,
   ],
   imports: [
-    CommonModule, 
+    CommonModule,
     nzModules,
     FontAwesomeModule,
     ReactiveFormsModule,
@@ -31,6 +37,9 @@ import { RouterModule, Routes } from '@angular/router';
     FooterComponent,
     ClockComponent,
     ReactiveFormsModule,
+    WelcomeModalComponent,
+    CongratsModalComponent,
+    BackButtonComponent,
   ]
 })
 export class SharedModule { }

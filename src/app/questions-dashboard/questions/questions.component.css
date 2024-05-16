@@ -1,0 +1,22 @@
+
+span {
+    padding-bottom: 10px;
+}
+
+.head-card {
+    width: 95%;
+    height: 80px;
+    font-family: Mulish;
+    font-size: 18px;
+    background: rgb(190, 190, 190);
+    border-radius: 5px;
+    margin: auto;
+}
+
+.date-span {
+    float: right;
+}
+
+.head-two {
+    height: inherit;
+}

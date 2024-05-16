@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  company_name: 'Question Bank',
+  company_name: 'GAMIFICATION',
+  baseUrl: '/api'
 };
 
 /*

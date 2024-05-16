@@ -1,0 +1,33 @@
+<div style="background: #ececec; padding: 30px">
+  <div class="title-div">
+    <back-button></back-button>
+    <nz-divider
+      nzText="Welcome, {{ user.firstName }} {{ user.lastName }}"
+    ></nz-divider>
+  </div>
+
+  <div class="quiz-card" *ngFor="let question of questions; let i = index">
+    <nz-card class="question-card">
+      <div class="question-header">
+        <span class="question-number">Question {{ i + 1 }}</span>
+      </div>
+      <div class="question-content">
+        <p class="question">{{ question.question }}</p>
+        <div class="options">
+          <div *ngFor="let option of question.answers">
+            <label class="option">
+              <input type="radio" name="question{{ i }}" (change)="setSelected(question.id, option.id)" [value]="option.id" />
+              <span>{{ option.answer }}</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </nz-card>
+  </div>
+
+  <div class="btn-row">
+    <button (click)="submitAttempt()" nz-button nzType="primary" nzBlock>
+      Submit Attempt
+    </button>
+  </div>
+</div>
